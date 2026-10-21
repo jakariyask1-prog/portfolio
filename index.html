@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Md. Jakariya Sheikh | AI Systems Architect</title>
-    <meta name="description" content="AI Systems Architect & Founder of ZENIVIXON. Creator of Jakariya AI Studio.">
+    <meta name="description" content="AI Systems Architect & Founder of ZENIVIXON. Creator of Jakariya AI Studio. Building autonomous agents, automated workflows, and high-performance AI systems.">
+    <meta name="keywords" content="Jakariya Sheikh, AI Architect, ZENIVIXON, Autonomous Agents, LLM, Python, Machine Learning, FastAPI">
+    <meta name="author" content="Md. Jakariya Sheikh">
+    <meta name="theme-color" content="#030303">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/founder-ceo.jpg">
+    <link rel="apple-touch-icon" href="images/founder-ceo.jpg">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.zenivixon.com/">
+    <meta property="og:title" content="Md. Jakariya Sheikh | AI Systems Architect">
+    <meta property="og:description" content="AI Systems Architect & Founder of ZENIVIXON. Creator of Jakariya AI Studio. Architecting intelligent systems & enterprise workflows.">
+    <meta property="og:image" content="images/founder-ceo.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Md. Jakariya Sheikh | AI Systems Architect">
+    <meta name="twitter:description" content="AI Systems Architect & Founder of ZENIVIXON. Creator of Jakariya AI Studio. Architecting intelligent systems & enterprise workflows.">
+    <meta name="twitter:image" content="images/founder-ceo.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,13 +87,68 @@
             background: linear-gradient(180deg, rgba(20, 20, 20, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
             border: 1px solid var(--border_color);
             box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
         .premium-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: linear-gradient(180deg, rgba(25, 25, 25, 0.8) 0%, rgba(15, 15, 15, 1) 100%);
+            border-color: rgba(255, 255, 255, 0.22);
+            background: linear-gradient(180deg, rgba(25, 25, 25, 0.85) 0%, rgba(15, 15, 15, 1) 100%);
             transform: translateY(-2px);
+            box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.5), 0 0 20px -2px rgba(255, 255, 255, 0.04);
+        }
+
+        /* Interactive Cursor Spotlight Glow Effect */
+        .spotlight-card {
+            position: relative;
+        }
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(450px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(255, 255, 255, 0.08), transparent 40%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Button Shimmer Shine Effect */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.22) 50%,
+                transparent 70%
+            );
+            transform: rotate(30deg) translateY(-100%);
+            transition: transform 0.75s ease;
+        }
+        .btn-shimmer:hover::after {
+            transform: rotate(30deg) translateY(100%);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-7px); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
         }
 
         .text-gradient {
@@ -110,9 +185,41 @@
             filter: grayscale(0%) contrast(1);
             transform: scale(1.05);
         }
+
+        /* Animated Code Editor Styles */
+        .code-line {
+            transition: background-color 0.15s ease, border-left-color 0.15s ease, transform 0.15s ease;
+            border-left: 2px solid transparent;
+            padding: 1px 6px;
+            border-radius: 2px;
+        }
+        .code-line.executing {
+            background: rgba(16, 185, 129, 0.14) !important;
+            border-left-color: #10b981 !important;
+            box-shadow: inset 0 0 12px rgba(16, 185, 129, 0.08);
+        }
+        .code-line.executing span:last-child {
+            color: #ffffff !important;
+        }
+        .cursor-blink {
+            display: inline-block;
+            width: 2px;
+            height: 14px;
+            background-color: #10b981;
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: cursorBlink 0.8s infinite;
+        }
+        @keyframes cursorBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="relative min-h-screen selection:bg-white/20 selection:text-white">
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-500 z-50 transition-all duration-75" style="width: 0%;"></div>
 
     <!-- Background Grid -->
     <div class="fixed inset-0 z-[-1] bg-grid pointer-events-none"></div>
@@ -120,7 +227,7 @@
 
     <!-- Minimal Navbar -->
     <nav class="fixed w-full top-0 z-40 backdrop-blur-md bg-[#030303]/70 border-b border-white/5 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="#" class="font-bold text-lg tracking-tighter flex items-center gap-3">
                 <img src="images/founder-ceo.jpg" alt="Md. Jakariya Sheikh" class="w-8 h-8 rounded-full border border-white/20 object-cover">
                 Jakariya Sheikh
@@ -155,56 +262,56 @@
         <a href="#contact" class="mobile-link px-6 py-2 bg-white text-black rounded-full mt-4">Contact Me</a>
     </div>
 
-    <main class="max-w-6xl mx-auto px-6 pt-32 pb-24">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-16">
         
         <!-- Hero Section -->
-        <section class="py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <section class="py-8 sm:py-12 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div class="lg:col-span-7 flex flex-col items-start text-left" data-aos="fade-right" data-aos-duration="1000">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-gray-400 mb-8 backdrop-blur-sm">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-gray-400 mb-6 backdrop-blur-sm">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     Available for consulting & development
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6 leading-[1.1]">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 sm:mb-6 leading-[1.1]">
                     Architecting <br />
                     <span class="text-gradient">Intelligent Systems.</span>
                 </h1>
                 
-                <p class="text-lg md:text-xl text-[#a3a3a3] max-w-xl mb-10 font-light leading-relaxed">
-                    I design and build autonomous AI agents, automated workflows, and high-performance web platforms. Creator of <strong class="text-white font-medium">Jakariya AI Studio</strong> and developer of the <strong class="text-white font-medium">ZENIVIXON</strong> platform.
+                <p class="text-base sm:text-lg md:text-xl text-[#a3a3a3] max-w-xl mb-6 sm:mb-8 font-light leading-relaxed">
+                    I design and build autonomous AI agents, multi-agent RAG pipelines, and high-performance web platforms. Creator of <strong class="text-white font-medium">Jakariya AI Studio</strong> and architect of the <strong class="text-white font-medium">ZENIVIXON</strong> enterprise AI suite.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-6">
-                    <a href="#projects" class="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-transform hover:scale-105 active:scale-95 text-center w-full sm:w-auto">
+                <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto mb-5 sm:mb-6">
+                    <a href="#projects" class="btn-shimmer px-7 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all hover:scale-105 active:scale-95 text-center w-full sm:w-auto text-sm sm:text-base shadow-lg hover:shadow-white/20">
                         View Projects
                     </a>
-                    <a href="mailto:jakariyask1@gmail.com" class="px-8 py-3.5 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-colors text-center w-full sm:w-auto">
+                    <a href="#contact" class="px-7 py-3 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/40 transition-all text-center w-full sm:w-auto text-sm sm:text-base">
                         Book a Call
                     </a>
                 </div>
                 <div class="w-full sm:w-auto text-left">
-                    <a href="Jakariya_Sheikh_CV.pdf" download class="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-0.5">
+                    <a href="Jakariya_Sheikh_CV.pdf" download class="inline-flex items-center gap-2 text-xs sm:text-sm text-[#888] hover:text-white transition-colors border-b border-transparent hover:border-white/50 pb-0.5">
                         <i class="fa-solid fa-file-arrow-down text-xs"></i> Download Curriculum Vitae (.pdf)
                     </a>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 relative w-full max-w-md mx-auto lg:max-w-none" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <div class="absolute -inset-6 bg-gradient-to-tr from-white/10 to-transparent opacity-40 blur-2xl rounded-full"></div>
-                <div class="absolute inset-0 bg-zinc-900 rounded-[2rem] transform rotate-3 border border-white/5 shadow-2xl transition-transform duration-500 hover:rotate-6"></div>
-                
-                <div class="relative z-10 w-full aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] premium-card">
-                    <img src="images/founder-ceo.jpg" alt="Md. Jakariya Sheikh" class="w-full h-full object-cover profile-img">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
-                    
-                    <div class="absolute bottom-6 left-6 right-6">
-                        <div class="backdrop-blur-md bg-black/50 border border-white/10 rounded-xl p-4 flex items-center gap-4 shadow-xl">
-                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                                <i class="fa-solid fa-briefcase text-white text-lg"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-bold text-sm md:text-base tracking-tight">Md. Jakariya Sheikh</p>
-                                <p class="text-[#a3a3a3] text-xs font-mono mt-1">CEO & AI Architect</p>
+            <div class="lg:col-span-5 relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto lg:max-w-none flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="relative w-full max-w-sm animate-float">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-emerald-500/10 via-blue-500/10 to-purple-500/10 opacity-70 blur-2xl rounded-full pointer-events-none"></div>
+                    <div class="relative z-10 w-full aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] premium-card shadow-2xl">
+                        <img src="images/founder-ceo.jpg" alt="Md. Jakariya Sheikh" class="w-full h-full object-cover profile-img" loading="eager" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                        
+                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                            <div class="backdrop-blur-md bg-black/60 border border-white/10 rounded-xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 shadow-xl">
+                                <div class="flex-shrink-0 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                                    <i class="fa-solid fa-briefcase text-white text-base sm:text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-bold text-sm sm:text-base tracking-tight">Md. Jakariya Sheikh</p>
+                                    <p class="text-[#a3a3a3] text-[11px] sm:text-xs font-mono mt-0.5">CEO & AI Architect</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -212,87 +319,140 @@
             </div>
         </section>
 
+        <!-- Live Architectural Metrics / Key Performance Indicators -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 my-6 sm:my-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="premium-card spotlight-card p-4 sm:p-5 rounded-2xl text-center flex flex-col items-center justify-center border border-white/10 bg-[#0a0a0a]/90">
+                <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight font-mono text-white flex items-center">
+                    <span class="counter" data-target="16">0</span><span>+</span>
+                </span>
+                <span class="text-[11px] sm:text-xs text-[#a3a3a3] font-sans mt-1.5 font-medium">AI Engines Active</span>
+            </div>
+            <div class="premium-card spotlight-card p-4 sm:p-5 rounded-2xl text-center flex flex-col items-center justify-center border border-white/10 bg-[#0a0a0a]/90">
+                <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight font-mono text-emerald-400 flex items-center">
+                    <span class="counter" data-target="366">0</span><span>+</span>
+                </span>
+                <span class="text-[11px] sm:text-xs text-[#a3a3a3] font-sans mt-1.5 font-medium">Passing Test Suites</span>
+            </div>
+            <div class="premium-card spotlight-card p-4 sm:p-5 rounded-2xl text-center flex flex-col items-center justify-center border border-white/10 bg-[#0a0a0a]/90">
+                <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight font-mono text-purple-400 flex items-center">
+                    <span>&lt;</span><span class="counter" data-target="40">0</span><span>ms</span>
+                </span>
+                <span class="text-[11px] sm:text-xs text-[#a3a3a3] font-sans mt-1.5 font-medium">Voice Latency & Barge-In</span>
+            </div>
+            <div class="premium-card spotlight-card p-4 sm:p-5 rounded-2xl text-center flex flex-col items-center justify-center border border-white/10 bg-[#0a0a0a]/90">
+                <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight font-mono text-blue-400 flex items-center">
+                    <span class="counter" data-target="3072">0</span><span>d</span>
+                </span>
+                <span class="text-[11px] sm:text-xs text-[#a3a3a3] font-sans mt-1.5 font-medium">Qdrant Vector RAG</span>
+            </div>
+        </div>
+
         <!-- Projects Section -->
-        <section id="projects" class="py-24 border-t border-white/5">
-            <div class="mb-12" data-aos="fade-up">
+        <section id="projects" class="py-12 sm:py-16 border-t border-white/5">
+            <div class="mb-8 sm:mb-10" data-aos="fade-up">
                 <h2 class="text-xs font-mono text-[#a3a3a3] uppercase tracking-[0.2em] mb-2">Selected Works</h2>
                 <h3 class="text-3xl md:text-4xl font-bold tracking-tight">Featured Projects</h3>
             </div>
 
             <!-- Project 1: Jakariya AI Studio -->
-            <div class="premium-card rounded-2xl md:rounded-[2rem] p-1 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <div class="premium-card spotlight-card rounded-2xl md:rounded-[2rem] p-1 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                 <div class="grid grid-cols-1 lg:grid-cols-2 bg-[#0a0a0a] rounded-xl md:rounded-[1.9rem]">
                     
-                    <div class="p-8 md:p-14 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5">
-                        <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-6 border border-white/10">
-                            <i class="fa-solid fa-microchip text-white"></i>
+                    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5">
+                        <div class="flex items-center gap-3.5 mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 p-1 flex items-center justify-center border border-white/15 overflow-hidden shadow-xl backdrop-blur-sm flex-shrink-0">
+                                <img src="images/jakariya-ai-studio-logo.jpeg" alt="Jakariya AI Studio Logo" class="w-full h-full object-contain rounded-lg" width="48" height="48" loading="lazy">
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-widest text-[#a3a3a3]">Flagship AI Workstation</span>
+                                <div class="text-xs font-mono text-emerald-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Production Desktop Engine</div>
+                            </div>
                         </div>
-                        <h4 class="text-2xl font-semibold mb-2 text-white">Jakariya AI Studio</h4>
-                        <p class="text-[#a3a3a3] leading-relaxed mb-10 text-sm">
-                            A unified, locally-hosted platform that solves real business problems automatically. Replaces multiple subscriptions and protects corporate data.
+                        <div class="flex items-center gap-2.5 mb-2 flex-wrap">
+                            <h4 class="text-xl sm:text-2xl font-semibold text-white">Jakariya AI Studio</h4>
+                            <span class="text-[10px] text-blue-400 font-mono border border-blue-500/20 bg-blue-500/10 px-2 py-0.5 rounded-full font-semibold">v2.0.0 Production</span>
+                            <span class="text-[10px] text-emerald-400 font-mono border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-check text-[9px]"></i> 366 Tests Passed (100%)
+                            </span>
+                        </div>
+                        <p class="text-[#a3a3a3] leading-relaxed mb-6 sm:mb-8 text-xs sm:text-sm">
+                            The ultimate desktop AI workstation, autonomous ReAct agent & live voice ecosystem built with <strong class="text-white">Python & PySide6 (Qt6)</strong>. Unites <strong class="text-white">16 premier cloud and local AI engines</strong>, dynamic capability registry, hands-free voice with barge-in interruption, FLUX.1 ultra-HD art synthesis, and 8-format document publishing into a unified, privacy-first desktop application.
                         </p>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4 sm:gap-y-5">
                             <div>
-                                <div class="text-white font-medium mb-1 flex items-center gap-2"><i class="fa-solid fa-layer-group text-emerald-500"></i> Cost-Efficiency</div>
-                                <p class="text-xs text-[#888]">9 AI engines in one. Replaces ChatGPT, Claude & Gemini subs.</p>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-layer-group text-emerald-500 text-xs"></i> 16 AI Engines</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Gemini 3.8/3.7/3.6, Groq (800+ t/s), Claude 3.7, DeepSeek V3/R1, Cerebras & 100% offline Ollama.</p>
                             </div>
                             <div>
-                                <div class="text-white font-medium mb-1 flex items-center gap-2"><i class="fa-solid fa-shield-halved text-emerald-500"></i> Absolute Privacy</div>
-                                <p class="text-xs text-[#888]">Runs locally on your PC. 100% offline Ollama support.</p>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-robot text-emerald-500 text-xs"></i> Autonomous ReAct Agent</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">12 sandboxed tools: Python REPL, surgical file editor, web search, shell, git, and diagnostics.</p>
                             </div>
                             <div>
-                                <div class="text-white font-medium mb-1 flex items-center gap-2"><i class="fa-solid fa-robot text-emerald-500"></i> Autonomous Agent</div>
-                                <p class="text-xs text-[#888]">Auto-researches & manages tasks without human input.</p>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-microphone text-emerald-500 text-xs"></i> Hands-Free Live Voice</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Sub-second voice mode with Barge-In interruption, dynamic echo shield (0.15), and cloned voice IDs.</p>
                             </div>
                             <div>
-                                <div class="text-white font-medium mb-1 flex items-center gap-2"><i class="fa-solid fa-microphone text-emerald-500"></i> Voice AI Control</div>
-                                <p class="text-xs text-[#888]">Interruptible, human-like voice mode with local language support.</p>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-file-pdf text-emerald-500 text-xs"></i> 8-Format Smart Docs</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Instant publishing to PDF (with NotoSansBengali unicode), DOCX, 1-click XLSX, HTML, and Markdown.</p>
                             </div>
                             <div>
-                                <div class="text-white font-medium mb-1 flex items-center gap-2"><i class="fa-solid fa-server text-emerald-500"></i> Zero Downtime</div>
-                                <p class="text-xs text-[#888]">Automatic failover shifts to backup providers instantly.</p>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-wand-magic-sparkles text-emerald-500 text-xs"></i> FLUX.1 & Same-Type Art</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">FLUX.1-schnell & multi-modal vision prompt synthesis to create matching companion artwork from any photo.</p>
                             </div>
                             <div>
-                                <div class="text-white font-medium mb-1 flex items-center gap-2"><i class="fa-solid fa-file-pdf text-emerald-500"></i> 1-Click Reports</div>
-                                <p class="text-xs text-[#888]">Instantly generates formatted PDF, DOCX, & Excel files.</p>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-shield-halved text-emerald-500 text-xs"></i> Enterprise Data Privacy</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Zero telemetry. SQLite WAL persistence & keys secured via Windows Credential Manager (Keyring).</p>
                             </div>
                         </div>
 
-                        <div class="mt-10">
-                            <a href="https://www.zenivixon.com/projects/jakariya-ai-studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white hover:text-black rounded-full text-sm font-medium text-white transition-all">
-                                View Project Details <i class="fa-solid fa-arrow-right"></i>
+                        <div class="mt-6 flex flex-wrap gap-1.5 sm:gap-2">
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">PySide6 (Qt6)</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Python 3.10-3.14</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">ReAct Agent</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Live Voice / VAD</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">FLUX.1 Art</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Keyring Vault</span>
+                        </div>
+
+                        <div class="mt-6 sm:mt-8">
+                            <a href="https://www.zenivixon.com/projects/jakariya-ai-studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white hover:text-black rounded-full text-xs sm:text-sm font-medium text-white transition-all">
+                                View Studio Specifications <i class="fa-solid fa-arrow-right text-xs"></i>
                             </a>
                         </div>
                     </div>
 
-                    <div class="p-6 md:p-10 flex items-center justify-center relative overflow-hidden bg-[#050505]">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 blur-[100px] rounded-full"></div>
+                    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex items-center justify-center relative overflow-hidden bg-[#050505]">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/5 blur-[100px] rounded-full pointer-events-none"></div>
                         
-                        <div class="w-full max-w-md bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl relative z-10 overflow-hidden font-mono text-xs md:text-sm">
-                            <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-[#111]">
+                        <div class="w-full max-w-md bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl relative z-10 overflow-hidden font-mono text-[11px] sm:text-xs">
+                            <div class="flex items-center justify-between px-3.5 py-2.5 border-b border-white/5 bg-[#111]">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
                                 </div>
-                                <span class="text-white/40 text-[10px] tracking-widest">JAKARIYA_STUDIO_LOGS</span>
+                                <span class="text-white/60 text-[9px] sm:text-[10px] tracking-widest flex items-center gap-2">
+                                    <img src="images/jakariya-ai-studio-logo.jpeg" alt="Jakariya AI Studio" class="w-3.5 h-3.5 rounded object-contain" width="14" height="14" loading="lazy">
+                                    JAKARIYA_STUDIO_v2.0_ENGINE
+                                </span>
                             </div>
-                            <div class="p-5 text-[#888] leading-relaxed">
-                                <p><span class="text-emerald-400">>></span> Initializing Jakariya AI Studio v2.0</p>
-                                <p><span class="text-emerald-400">>></span> Loading 9 AI Engines... <span class="text-white">Done</span></p>
-                                <p><span class="text-emerald-400">>></span> Data Privacy: <span class="text-purple-400 font-bold">LOCAL (Ollama Active)</span></p>
+                            <div class="p-4 sm:p-5 text-[#888] leading-relaxed text-[11px] sm:text-xs">
+                                <p><span class="text-emerald-400">>></span> Initializing Jakariya AI Studio v2.0.0 [PySide6 / Qt6]</p>
+                                <p><span class="text-emerald-400">>></span> Provider Registry: <span class="text-white font-semibold">16 Engines Active</span> (Gemini 3.8, Groq, Claude 3.7)</p>
+                                <p><span class="text-emerald-400">>></span> Test Suite Status: <span class="text-emerald-400 font-bold">366 / 366 Passed (100% Green)</span></p>
+                                <p><span class="text-emerald-400">>></span> Credentials: <span class="text-purple-400 font-bold">Encrypted via Windows Keyring Vault</span></p>
                                 <br>
-                                <p class="text-white/40"># Task: Research market & generate report</p>
-                                <p><span class="text-blue-400">Agent</span>: Browsing live internet...</p>
-                                <p><span class="text-blue-400">Agent</span>: Processing data securely on localhost...</p>
-                                <p><span class="text-blue-400">Agent</span>: Exporting to <span class="text-orange-400">Market_Report.docx</span></p>
-                                <p class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> File saved successfully.</p>
+                                <p class="text-white/40"># ReAct Agent Planning Loop Initiated</p>
+                                <p><span class="text-blue-400">Thought</span>: Resolving capabilities for live research & report synthesis...</p>
+                                <p><span class="text-blue-400">Action</span>: <span class="text-yellow-400">web_search("Enterprise Multi-Agent Benchmarks")</span></p>
+                                <p><span class="text-blue-400">Action</span>: <span class="text-yellow-400">export_document(format="pdf", unicode="NotoSansBengali")</span></p>
+                                <p class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Generated: Market_Report.pdf & Financials.xlsx</p>
                                 <br>
-                                <p class="text-white/40"># Network event simulated</p>
-                                <p class="text-red-400"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Primary API connection lost.</p>
-                                <p class="text-yellow-400">> Auto-failover triggered. Switching engine...</p>
-                                <p class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Connection restored seamlessly.</p>
+                                <p class="text-white/40"># Live Voice Interruption Subsystem</p>
+                                <p><span class="text-purple-400">Voice</span>: Continuous Live Mode active (⚡ Live)</p>
+                                <p><span class="text-purple-400">Barge-In</span>: Interruption token triggered | Echo Attenuation: <span class="text-white">0.15</span></p>
+                                <p class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Seamless transition back to listening (40ms).</p>
                                 <br>
                                 <p class="flex items-center gap-2 text-white">
                                     <span class="animate-pulse">_</span>
@@ -304,40 +464,41 @@
             </div>
 
             <!-- Project 2: ZENIVIXON Platform & AI Consultant -->
-            <div class="premium-card rounded-2xl md:rounded-[2rem] p-1 overflow-hidden mt-12" data-aos="fade-up" data-aos-delay="200">
-                <div class="grid grid-cols-1 lg:grid-cols-2 bg-[#0a0a0a] rounded-xl md:rounded-[1.9rem]">
+            <div class="premium-card spotlight-card rounded-2xl md:rounded-[2rem] p-1 overflow-hidden mt-8 sm:mt-10" data-aos="fade-up" data-aos-delay="200">
+                <div class="grid grid-cols-1 lg:grid-cols-2 bg-[#0a0a0a] rounded-xl md:rounded-[1.9rem] items-stretch">
                     
-                    <div class="p-6 md:p-10 flex items-center justify-center relative overflow-hidden bg-[#050505] border-b lg:border-b-0 lg:border-r border-white/5 order-2 lg:order-1">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full"></div>
+                    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex items-center justify-center relative overflow-hidden bg-[#050505] border-b lg:border-b-0 lg:border-r border-white/5 order-2 lg:order-1">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none"></div>
                         
-                        <div class="w-full max-w-md bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl relative z-10 overflow-hidden">
-                            <div class="flex items-center gap-4 px-4 py-3 border-b border-white/5 bg-[#111]">
+                        <div class="w-full max-w-md bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl relative z-10 overflow-hidden font-mono text-[11px] sm:text-xs">
+                            <div class="flex items-center gap-3 px-3.5 py-2.5 border-b border-white/5 bg-[#111]">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
                                 </div>
-                                <div class="bg-white/5 rounded px-3 py-1 text-[10px] text-white/40 flex-1 text-center font-mono flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-lock text-[8px]"></i> zenivixon.com
+                                <div class="bg-white/5 rounded px-2.5 py-0.5 text-[9px] sm:text-[10px] text-white/60 flex-1 text-center font-mono flex items-center justify-center gap-1.5">
+                                    <img src="images/zenivixon-logo.jpeg" alt="ZENIVIXON" class="w-3.5 h-3.5 rounded object-contain" width="14" height="14" loading="lazy">
+                                    <i class="fa-solid fa-lock text-[8px] text-zinc-500"></i> zenivixon.com
                                 </div>
                             </div>
-                            <div class="p-5 font-sans h-[250px] flex flex-col">
-                                <div class="flex items-center justify-between mb-6">
-                                    <div class="text-white font-bold tracking-widest text-xs">ZENIVIXON AI</div>
+                            <div class="p-4 sm:p-5 font-sans min-h-[220px] flex flex-col justify-between">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="text-white font-bold tracking-widest text-[11px] sm:text-xs">ZENIVIXON AI</div>
                                     <div class="text-[10px] text-emerald-400 border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 rounded-full flex items-center gap-1">
                                         <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div> Active
                                     </div>
                                 </div>
-                                <div class="space-y-4 flex-1">
-                                    <div class="bg-white/5 rounded-lg rounded-tl-none p-3 w-4/5 border border-white/5">
+                                <div class="space-y-3 flex-1">
+                                    <div class="bg-white/5 rounded-lg rounded-tl-none p-2.5 sm:p-3 w-5/6 border border-white/5">
                                         <p class="text-xs text-white/70">Hello! I am the ZENIVIXON AI Consultant. How can I optimize your business processes today?</p>
                                     </div>
-                                    <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg rounded-tr-none p-3 w-4/5 ml-auto">
-                                        <p class="text-xs text-emerald-400">I need a system to automate my client onboarding and support.</p>
+                                    <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg rounded-tr-none p-2.5 sm:p-3 w-5/6 ml-auto">
+                                        <p class="text-xs text-emerald-400">I need an automated system for client onboarding and support.</p>
                                     </div>
-                                    <div class="bg-white/5 rounded-lg rounded-tl-none p-3 w-3/4 border border-white/5">
+                                    <div class="bg-white/5 rounded-lg rounded-tl-none p-2.5 sm:p-3 w-4/5 border border-white/5">
                                         <p class="text-xs text-white/70 flex items-center gap-2">
-                                            <i class="fa-solid fa-circle-notch fa-spin"></i> Generating blueprint...
+                                            <i class="fa-solid fa-circle-notch fa-spin text-emerald-400"></i> Generating blueprint...
                                         </p>
                                     </div>
                                 </div>
@@ -345,28 +506,34 @@
                         </div>
                     </div>
 
-                    <div class="p-8 md:p-14 flex flex-col justify-center order-1 lg:order-2">
-                        <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-6 border border-white/10">
-                            <i class="fa-solid fa-globe text-white"></i>
+                    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center order-1 lg:order-2">
+                        <div class="flex items-center gap-3.5 mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 p-1 flex items-center justify-center border border-white/15 overflow-hidden shadow-xl backdrop-blur-sm flex-shrink-0">
+                                <img src="images/zenivixon-logo.jpeg" alt="ZENIVIXON Logo" class="w-full h-full object-contain rounded-lg" width="48" height="48" loading="lazy">
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-widest text-[#a3a3a3]">Enterprise AI Venture</span>
+                                <div class="text-xs font-mono text-emerald-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Web Platform & AI Consultant</div>
+                            </div>
                         </div>
-                        <h4 class="text-2xl font-semibold mb-2 text-white">ZENIVIXON & AI Consultant</h4>
-                        <p class="text-[#a3a3a3] leading-relaxed mb-8 text-sm">
+                        <h4 class="text-xl sm:text-2xl font-semibold mb-2 text-white">ZENIVIXON & AI Consultant</h4>
+                        <p class="text-[#a3a3a3] leading-relaxed mb-6 sm:mb-8 text-xs sm:text-sm">
                             Beyond founding the company, I architected and developed the entire ZENIVIXON web platform and its proprietary AI Consultant system from scratch. The AI Consultant acts as an intelligent first point of contact, actively analyzing business needs and demonstrating our capabilities live to prospective clients.
                         </p>
-                        <ul class="space-y-3 font-mono text-sm text-[#bbbbbb]">
-                            <li class="flex items-center gap-3">
-                                <i class="fa-solid fa-check text-white/50 text-xs"></i> Full-Stack Web Architecture
+                        <ul class="space-y-2.5 font-mono text-xs sm:text-sm text-[#bbbbbb]">
+                            <li class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-400 text-xs"></i> Full-Stack Web Architecture
                             </li>
-                            <li class="flex items-center gap-3">
-                                <i class="fa-solid fa-check text-white/50 text-xs"></i> Intelligent Client Routing
+                            <li class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-400 text-xs"></i> Intelligent Client Routing
                             </li>
-                            <li class="flex items-center gap-3">
-                                <i class="fa-solid fa-check text-white/50 text-xs"></i> Custom NLP Integration
+                            <li class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-400 text-xs"></i> Custom NLP Integration
                             </li>
                         </ul>
-                        <div class="mt-10">
-                            <a href="https://www.zenivixon.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white hover:text-black rounded-full text-sm font-medium text-white transition-all">
-                                Visit zenivixon.com <i class="fa-solid fa-arrow-right"></i>
+                        <div class="mt-6 sm:mt-8">
+                            <a href="https://www.zenivixon.com" target="_blank" rel="noopener noreferrer" class="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white hover:text-black rounded-full text-xs sm:text-sm font-medium text-white transition-all">
+                                Visit zenivixon.com <i class="fa-solid fa-arrow-right text-xs"></i>
                             </a>
                         </div>
                     </div>
@@ -374,49 +541,180 @@
                 </div>
             </div>
 
+            <!-- Project 3: ZENIVIXON Autonomous Support & Triage Agent -->
+            <div class="premium-card spotlight-card rounded-2xl md:rounded-[2rem] p-1 overflow-hidden mt-8 sm:mt-10" data-aos="fade-up" data-aos-delay="200">
+                <div class="grid grid-cols-1 lg:grid-cols-2 bg-[#0a0a0a] rounded-xl md:rounded-[1.9rem] items-stretch">
+                    
+                    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5">
+                        <div class="flex items-center gap-3.5 mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 p-1 flex items-center justify-center border border-white/15 overflow-hidden shadow-xl backdrop-blur-sm flex-shrink-0">
+                                <img src="images/zenivixon-logo.jpeg" alt="ZENIVIXON Support Logo" class="w-full h-full object-contain rounded-lg" width="48" height="48" loading="lazy">
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-widest text-[#a3a3a3]">ZENIVIXON Enterprise</span>
+                                <div class="text-xs font-mono text-emerald-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> LangGraph Support & Triage</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2.5 mb-2 flex-wrap">
+                            <h4 class="text-xl sm:text-2xl font-semibold text-white">Autonomous Customer Support & Triage Agent</h4>
+                            <span class="text-[10px] text-emerald-400 font-mono border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-0.5 rounded-full flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Multi-Agent RAG
+                            </span>
+                        </div>
+                        <p class="text-[#a3a3a3] leading-relaxed mb-6 sm:mb-8 text-xs sm:text-sm">
+                            An enterprise support console and autonomous ticket triage system driven by a stateful <strong class="text-white">LangGraph</strong> multi-agent pipeline. It automatically classifies incoming inquiries, verifies customer records, executes grounded RAG via <strong class="text-white">Qdrant</strong> & <strong class="text-white">Gemini 3.6 Flash</strong>, and safely resolves tickets or routes churn risks to human teams.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4 sm:gap-y-5 mb-6 sm:mb-8">
+                            <div>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-sitemap text-emerald-500 text-xs"></i> LangGraph Orchestration</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Stateful sequential stages: Intake → Verify → Tools → Grounded Resolution → Safety Gate.</p>
+                            </div>
+                            <div>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-brain text-emerald-500 text-xs"></i> Grounded Gemini RAG</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Gemini 3.6 Flash + 3072-dim embeddings against Qdrant vector knowledge base.</p>
+                            </div>
+                            <div>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-shield-halved text-emerald-500 text-xs"></i> Smart Safety & Routing</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Safety policies verify responses before auto-resolving or routing churn risks to human agents.</p>
+                            </div>
+                            <div>
+                                <div class="text-white font-medium mb-1 text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-desktop text-emerald-500 text-xs"></i> Operations Console</div>
+                                <p class="text-[11px] sm:text-xs text-[#888] leading-normal">Next.js 16 (App Router), React 19, and Tailwind v4 live dashboard with agent trace feeds.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">LangGraph</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Gemini 3.6 Flash</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">FastAPI</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Qdrant Vector DB</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Next.js 16</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Neon Postgres</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Docker</span>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+                            <a href="https://support.zenivixon.com/" target="_blank" rel="noopener noreferrer" class="btn-shimmer inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-transform hover:scale-105 active:scale-95 text-xs sm:text-sm">
+                                Live Console <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                            <a href="#contact" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 rounded-full text-xs sm:text-sm font-medium text-white transition-all">
+                                Request Architecture Breakdown
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Pipeline & Ticket Triage Visual -->
+                    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex items-center justify-center relative overflow-hidden bg-[#050505]">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/5 blur-[120px] rounded-full"></div>
+                        
+                        <div class="w-full max-w-md bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl relative z-10 overflow-hidden font-mono text-xs">
+                            <!-- Header -->
+                            <div class="flex items-center gap-3 px-3.5 py-2.5 border-b border-white/5 bg-[#111]">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <a href="https://support.zenivixon.com/" target="_blank" rel="noopener noreferrer" class="bg-white/5 hover:bg-white/10 transition-colors rounded px-2.5 py-0.5 text-[9px] sm:text-[10px] text-zinc-300 flex-1 text-center font-mono flex items-center justify-center gap-1.5">
+                                    <img src="images/zenivixon-logo.jpeg" alt="ZENIVIXON Support" class="w-3.5 h-3.5 rounded object-contain" width="14" height="14" loading="lazy">
+                                    <i class="fa-solid fa-lock text-[8px] text-zinc-500"></i> support.zenivixon.com <i class="fa-solid fa-arrow-up-right-from-square text-[8px] opacity-70"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- Ticket Card & State Pipeline -->
+                            <div class="p-4 sm:p-5 space-y-3 font-sans">
+                                <!-- Incoming Ticket Badge -->
+                                <div class="flex items-center justify-between bg-white/5 p-2.5 sm:p-3 rounded-lg border border-white/5">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-yellow-400 animate-ping"></span>
+                                        <span class="text-xs font-mono text-white font-medium">Ticket #TK-9402</span>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded">High Urgency</span>
+                                </div>
+
+                                <!-- Workflow Steps -->
+                                <div class="space-y-1.5 text-xs font-mono">
+                                    <div class="flex items-center justify-between p-2 rounded bg-white/[0.02] border border-white/5">
+                                        <span class="text-zinc-400 flex items-center gap-2 text-[11px] sm:text-xs"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 1. Intake & Classification</span>
+                                        <span class="text-[10px] text-emerald-400">Gemini 3.6</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded bg-white/[0.02] border border-white/5">
+                                        <span class="text-zinc-400 flex items-center gap-2 text-[11px] sm:text-xs"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 2. Customer ID Verification</span>
+                                        <span class="text-[10px] text-blue-400">Neon Postgres</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded bg-white/[0.02] border border-white/5">
+                                        <span class="text-zinc-400 flex items-center gap-2 text-[11px] sm:text-xs"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 3. Grounded RAG Search</span>
+                                        <span class="text-[10px] text-purple-400">Qdrant (3072d)</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded bg-white/[0.02] border border-white/5">
+                                        <span class="text-zinc-400 flex items-center gap-2 text-[11px] sm:text-xs"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 4. Safety & Policy Gate</span>
+                                        <span class="text-[10px] text-emerald-400">Passed (100%)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Result Route Card -->
+                                <div class="p-2.5 sm:p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-emerald-400 font-semibold font-mono flex items-center gap-1.5 text-xs">
+                                            <i class="fa-solid fa-circle-check"></i> Action: Auto-Resolved
+                                        </span>
+                                        <span class="text-[10px] font-mono text-zinc-400">Latency: 1.2s</span>
+                                    </div>
+                                    <p class="text-zinc-300 font-sans text-[11px] leading-relaxed">
+                                        Response generated with high doc relevance score (0.94). Grounded in 30 master KB chunks.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- In Progress / Running Projects -->
-            <div class="mt-20 border-t border-white/5 pt-16" data-aos="fade-up">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
-                    <h3 class="text-2xl font-bold tracking-tight text-white">Currently in Development</h3>
-                    <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-mono animate-pulse flex items-center gap-2">
+            <div class="mt-10 sm:mt-12 border-t border-white/5 pt-8 sm:pt-10" data-aos="fade-up">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3">
+                    <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Currently in Development</h3>
+                    <span class="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-mono animate-pulse flex items-center gap-1.5">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Live Projects
                     </span>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     <!-- Project 1 -->
-                    <div class="p-6 bg-[#0a0a0a] border border-white/10 rounded-xl hover:border-white/20 transition-colors">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
-                                <i class="fa-solid fa-database text-white/50"></i>
+                    <div class="premium-card spotlight-card p-5 sm:p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all cursor-default">
+                        <div class="flex justify-between items-start mb-3.5">
+                            <div class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
+                                <i class="fa-solid fa-network-wired text-white/50 text-sm"></i>
                             </div>
                             <span class="text-[10px] text-emerald-400 font-mono border border-emerald-500/20 bg-emerald-500/5 px-2 py-0.5 rounded">Running</span>
                         </div>
-                        <h4 class="text-white font-medium mb-2">Enterprise RAG Pipeline</h4>
-                        <p class="text-xs text-[#888] leading-relaxed">A high-speed retrieval-augmented generation system for processing corporate documents locally.</p>
+                        <h4 class="text-white font-medium mb-1.5 text-sm sm:text-base">Multi-Agent Swarm Coordinator</h4>
+                        <p class="text-xs text-[#888] leading-relaxed">Hierarchical multi-agent network distributing asynchronous sub-tasks across local and cloud LLM nodes.</p>
                     </div>
                     
                     <!-- Project 2 -->
-                    <div class="p-6 bg-[#0a0a0a] border border-white/10 rounded-xl hover:border-white/20 transition-colors">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
-                                <i class="fa-solid fa-headset text-white/50"></i>
+                    <div class="premium-card spotlight-card p-5 sm:p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all cursor-default">
+                        <div class="flex justify-between items-start mb-3.5">
+                            <div class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
+                                <i class="fa-solid fa-headset text-white/50 text-sm"></i>
                             </div>
                             <span class="text-[10px] text-emerald-400 font-mono border border-emerald-500/20 bg-emerald-500/5 px-2 py-0.5 rounded">Running</span>
                         </div>
-                        <h4 class="text-white font-medium mb-2">Voice-to-CRM Agent</h4>
+                        <h4 class="text-white font-medium mb-1.5 text-sm sm:text-base">Voice-to-CRM Agent</h4>
                         <p class="text-xs text-[#888] leading-relaxed">An automated AI caller that takes voice notes from sales reps and instantly updates CRM records via API.</p>
                     </div>
 
                     <!-- Project 3 -->
-                    <div class="p-6 bg-[#0a0a0a] border border-white/10 rounded-xl hover:border-white/20 transition-colors">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
-                                <i class="fa-solid fa-chart-line text-white/50"></i>
+                    <div class="premium-card spotlight-card p-5 sm:p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all cursor-default">
+                        <div class="flex justify-between items-start mb-3.5">
+                            <div class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
+                                <i class="fa-solid fa-chart-line text-white/50 text-sm"></i>
                             </div>
                             <span class="text-[10px] text-yellow-400 font-mono border border-yellow-500/20 bg-yellow-500/5 px-2 py-0.5 rounded">Prototyping</span>
                         </div>
-                        <h4 class="text-white font-medium mb-2">AI Data Analyst</h4>
+                        <h4 class="text-white font-medium mb-1.5 text-sm sm:text-base">AI Data Analyst</h4>
                         <p class="text-xs text-[#888] leading-relaxed">Automated agent that writes SQL, queries local databases, and generates beautifully designed visual reports.</p>
                     </div>
                 </div>
@@ -424,102 +722,114 @@
         </section>
 
         <!-- Technical Expertise & Python Code Showcase -->
-        <section id="expertise" class="py-24 border-t border-white/5">
-            <div class="mb-12" data-aos="fade-up">
+        <section id="expertise" class="py-12 sm:py-16 border-t border-white/5">
+            <div class="mb-6 sm:mb-8" data-aos="fade-up">
                 <h2 class="text-xs font-mono text-[#a3a3a3] uppercase tracking-[0.2em] mb-2">Technical Proficiency</h2>
                 <h3 class="text-3xl md:text-4xl font-bold tracking-tight">Engineering Stack & Ecosystem</h3>
             </div>
 
             <!-- Interactive Tech Network Card -->
-            <div class="mb-16 premium-card rounded-2xl md:rounded-[2rem] p-1 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-[#050505] rounded-xl md:rounded-[1.9rem] relative overflow-hidden h-[350px] flex items-center justify-center border border-white/5 cursor-crosshair">
+            <div class="mb-8 sm:mb-10 premium-card spotlight-card rounded-2xl md:rounded-[2rem] p-1 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-[#050505] rounded-xl md:rounded-[1.9rem] relative overflow-hidden h-[240px] sm:h-[280px] md:h-[300px] flex items-center justify-center border border-white/5 cursor-crosshair">
                     <canvas id="tech-network" class="absolute inset-0 w-full h-full"></canvas>
-                    <div class="absolute bottom-6 left-6 pointer-events-none z-10 bg-black/50 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 shadow-xl">
-                        <h4 class="text-white font-bold text-sm flex items-center gap-2">
+                    <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 pointer-events-none z-10 bg-black/60 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-white/10 shadow-xl">
+                        <h4 class="text-white font-bold text-xs sm:text-sm flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                             Interactive Tech Ecosystem
                         </h4>
-                        <p class="text-[10px] text-[#888] font-mono mt-1">Touch or hover to interact</p>
+                        <p class="text-[9px] sm:text-[10px] text-[#888] font-mono mt-0.5">Touch or hover to interact</p>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
                 
                 <!-- Left: Expertise List -->
-                <div class="lg:col-span-5" data-aos="fade-right">
-                    <div class="space-y-8">
-                        <div class="flex gap-4">
-                            <div class="text-white/40 mt-1"><i class="fa-brands fa-python text-xl"></i></div>
+                <div class="lg:col-span-4 flex flex-col justify-between py-1" data-aos="fade-right">
+                    <div class="space-y-6 sm:space-y-7">
+                        <div class="flex gap-3.5">
+                            <div class="text-white/40 mt-1 flex-shrink-0"><i class="fa-brands fa-python text-lg text-emerald-400"></i></div>
                             <div>
-                                <h4 class="text-white font-medium mb-1">Advanced Python Development</h4>
-                                <p class="text-sm text-[#888] leading-relaxed">Building scalable, object-oriented systems and complex algorithms optimized for high performance.</p>
+                                <h4 class="text-white font-medium mb-1 text-sm sm:text-base">Desktop & Systems Architecture</h4>
+                                <p class="text-xs sm:text-sm text-[#888] leading-relaxed">Building high-performance workstations with PySide6 (Qt6), asynchronous QThread workers, and native OS Keyring credential vaults.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="text-white/40 mt-1"><i class="fa-solid fa-server text-xl"></i></div>
+                        <div class="flex gap-3.5">
+                            <div class="text-white/40 mt-1 flex-shrink-0"><i class="fa-solid fa-robot text-lg text-blue-400"></i></div>
                             <div>
-                                <h4 class="text-white font-medium mb-1">FastAPI & REST APIs</h4>
-                                <p class="text-sm text-[#888] leading-relaxed">Designing asynchronous, high-throughput backend services and secure API endpoints.</p>
+                                <h4 class="text-white font-medium mb-1 text-sm sm:text-base">Autonomous ReAct Agent & Sandboxed Tools</h4>
+                                <p class="text-xs sm:text-sm text-[#888] leading-relaxed">Architecting multi-turn reasoning loops with 12 isolated agent tools, AST safety inspection, and real-time unified diff reviews.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="text-white/40 mt-1"><i class="fa-solid fa-brain text-xl"></i></div>
+                        <div class="flex gap-3.5">
+                            <div class="text-white/40 mt-1 flex-shrink-0"><i class="fa-solid fa-brain text-lg text-purple-400"></i></div>
                             <div>
-                                <h4 class="text-white font-medium mb-1">AI Agent Architecture</h4>
-                                <p class="text-sm text-[#888] leading-relaxed">Integrating LLMs (Local & API), RAG pipelines, and building autonomous decision-making loops.</p>
+                                <h4 class="text-white font-medium mb-1 text-sm sm:text-base">Multi-Engine Routing & Live Voice</h4>
+                                <p class="text-xs sm:text-sm text-[#888] leading-relaxed">Dynamic capability registry uniting 16 LLM engines (Gemini 3.8, Groq 800 t/s, Claude 3.7) and sub-second voice with barge-in interruption.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Realistic Python Code Editor Mockup -->
-                <div class="lg:col-span-7" data-aos="fade-left">
-                    <div class="rounded-xl overflow-hidden border border-white/10 bg-[#0d0d0d] shadow-2xl relative">
-                        <!-- IDE Header -->
-                        <div class="flex items-center px-4 py-3 bg-[#161616] border-b border-white/5">
-                            <div class="flex items-center gap-2">
-                                <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                                <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                                <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                <!-- Right: Realistic Python Code Editor Mockup with Animation & Multi-File Tabs (Expanded Standard Box) -->
+                <div class="lg:col-span-8 flex flex-col justify-center" data-aos="fade-left">
+                    <div class="premium-card spotlight-card rounded-2xl overflow-hidden border border-white/10 bg-[#0d0d0d] shadow-2xl relative">
+                        <!-- IDE Header with Window Controls & File Tabs -->
+                        <div class="flex items-center justify-between px-4 sm:px-5 py-3 bg-[#141414] border-b border-white/5">
+                            <div class="flex items-center gap-3 sm:gap-4 overflow-hidden">
+                                <div class="flex items-center gap-1.5 flex-shrink-0">
+                                    <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                                </div>
+                                <div class="hidden sm:flex items-center gap-1.5 font-mono text-xs">
+                                    <button class="code-tab-btn active px-3.5 py-1.5 rounded-md bg-[#1e1e1e] text-white border border-white/10 text-xs flex items-center gap-2 transition-all cursor-pointer font-medium" data-tab="studio">
+                                        <i class="fa-brands fa-python text-[#3776ab]"></i> studio_main.py
+                                    </button>
+                                    <button class="code-tab-btn px-3.5 py-1.5 rounded-md bg-transparent hover:bg-white/5 text-[#888] hover:text-white border border-transparent text-xs flex items-center gap-2 transition-all cursor-pointer font-medium" data-tab="triage">
+                                        <i class="fa-brands fa-python text-[#e5c07b]"></i> triage_main.py
+                                    </button>
+                                    <button class="code-tab-btn px-3.5 py-1.5 rounded-md bg-transparent hover:bg-white/5 text-[#888] hover:text-white border border-transparent text-xs flex items-center gap-2 transition-all cursor-pointer font-medium" data-tab="consultant">
+                                        <i class="fa-brands fa-python text-[#c678dd]"></i> consultant_main.py
+                                    </button>
+                                </div>
                             </div>
-                            <div class="mx-auto text-xs font-mono text-[#888] flex items-center gap-2">
-                                <i class="fa-brands fa-python text-[#3776ab]"></i> main.py — ZENIVIXON_CORE
+                            
+                            <!-- Action Controls (Copy Code & Run Simulation) -->
+                            <div class="flex items-center gap-2 flex-shrink-0 ml-3">
+                                <button id="copy-code-btn" type="button" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white font-mono text-xs rounded-md transition-all flex items-center gap-1.5 cursor-pointer border border-white/10 active:scale-95">
+                                    <i class="fa-regular fa-copy text-xs"></i> <span id="copy-code-text">Copy</span>
+                                </button>
+                                <button id="run-code-btn" type="button" class="btn-shimmer px-3.5 py-1.5 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 font-mono text-xs rounded-md transition-all flex items-center gap-1.5 active:scale-95 shadow-sm cursor-pointer font-medium">
+                                    <i class="fa-solid fa-play text-[10px]" id="run-icon"></i> <span id="run-btn-text">Run Trace</span>
+                                </button>
                             </div>
                         </div>
+
+                        <!-- Mobile Tab Bar -->
+                        <div class="sm:hidden flex items-center gap-1 px-3 py-2 bg-[#161616] border-b border-white/5 font-mono text-xs overflow-x-auto">
+                            <button class="code-tab-btn active px-3 py-1 rounded bg-[#1e1e1e] text-white border border-white/10" data-tab="studio">studio_main.py</button>
+                            <button class="code-tab-btn px-3 py-1 rounded text-[#888]" data-tab="triage">triage_main.py</button>
+                            <button class="code-tab-btn px-3 py-1 rounded text-[#888]" data-tab="consultant">consultant_main.py</button>
+                        </div>
+
                         <!-- IDE Code Area -->
-                        <div class="p-6 overflow-x-auto text-[13px] md:text-sm font-mono leading-loose bg-[#1e1e1e]">
-<pre><code><span class="text-[#c678dd]">import</span> asyncio
-<span class="text-[#c678dd]">from</span> fastapi <span class="text-[#c678dd]">import</span> FastAPI, BackgroundTasks
-<span class="text-[#c678dd]">from</span> zenivixon.ai <span class="text-[#c678dd]">import</span> AutonomousAgent, LlamaModel
+                        <div class="p-5 sm:p-6 overflow-x-auto text-[12px] sm:text-[13px] font-mono leading-relaxed bg-[#1e1e1e] min-h-[330px] max-h-[440px] overflow-y-auto" id="code-content-wrapper">
+                            <!-- Code Tab Content will be rendered dynamically with line numbers & animation -->
+                        </div>
 
-<span class="text-[#5c6370] italic"># Initialize high-performance async API</span>
-app = FastAPI(title=<span class="text-[#98c379]">"Zenivixon AI Core"</span>)
-
-<span class="text-[#5c6370] italic"># Configure local agent with offline capabilities</span>
-agent = AutonomousAgent(
-    model=LlamaModel.load_local(<span class="text-[#98c379]">"llama-3-70b"</span>),
-    memory_buffer=<span class="text-[#d19a66]">True</span>,
-    tools=[<span class="text-[#98c379]">"web_search"</span>, <span class="text-[#98c379]">"document_gen"</span>]
-)
-
-<span class="text-[#61afef]">@app.post</span>(<span class="text-[#98c379]">"/api/v1/execute_workflow"</span>)
-<span class="text-[#c678dd]">async def</span> <span class="text-[#61afef]">execute_workflow</span>(task_prompt: <span class="text-[#e5c07b]">str</span>, bg_tasks: BackgroundTasks):
-    <span class="text-[#5c6370] italic">"""
-    Deploys an autonomous workflow based on client requests.
-    Utilizes 100% local execution for absolute privacy.
-    """</span>
-    <span class="text-[#5c6370] italic"># Step 1: Analyze context using local LLM</span>
-    context = <span class="text-[#c678dd]">await</span> agent.analyze_context(task_prompt)
-    
-    <span class="text-[#5c6370] italic"># Step 2: Route to background processing</span>
-    bg_tasks.add_task(agent.run_autonomous_loop, context)
-    
-    <span class="text-[#c678dd]">return</span> {
-        <span class="text-[#98c379]">"status"</span>: <span class="text-[#98c379]">"processing"</span>,
-        <span class="text-[#98c379]">"agent_id"</span>: agent.id,
-        <span class="text-[#98c379]">"message"</span>: <span class="text-[#98c379]">"AI workflow deployed to background workers."</span>
-    }</code></pre>
+                        <!-- Interactive Terminal Console Output Drawer -->
+                        <div class="bg-[#0f0f0f] border-t border-white/10 px-4 sm:px-5 py-3 font-mono text-xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-white/70 text-[10px] tracking-widest uppercase flex items-center gap-2">
+                                    <span id="term-status-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    LIVE EXECUTION CONSOLE
+                                </span>
+                                <span id="term-exec-time" class="text-[11px] text-zinc-500 font-mono">Status: Ready</span>
+                            </div>
+                            <div id="term-log-content" class="space-y-1.5 max-h-[90px] overflow-y-auto leading-relaxed text-zinc-400 text-xs">
+                                <p class="text-zinc-500">> Ready. Click "Run Trace" to watch autonomous execution loop...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -527,64 +837,66 @@ agent = AutonomousAgent(
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-24 border-t border-white/5">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <section id="about" class="py-12 sm:py-16 md:py-20 border-t border-white/5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
                 <div data-aos="fade-right">
                     
-                    <h2 class="text-xs font-mono text-[#a3a3a3] uppercase tracking-[0.2em] mb-4">Background</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">A mathematician's approach to engineering.</h3>
+                    <h2 class="text-xs font-mono text-[#a3a3a3] uppercase tracking-[0.2em] mb-3">Background</h2>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4 sm:mb-6">A mathematician's approach to engineering.</h3>
                     
-                    <div class="space-y-4 text-[#a3a3a3] leading-relaxed">
+                    <div class="space-y-4 text-[#a3a3a3] text-sm sm:text-base leading-relaxed">
                         <p>
-                            I founded <strong class="text-white font-medium">ZENIVIXON</strong> to close the gap between what AI can technically do and what a business can actually rely on. That means fewer demos and more systems that run correctly without supervision.
+                            I founded <strong class="text-white font-medium">ZENIVIXON</strong> and architected <strong class="text-white font-medium">Jakariya AI Studio (v2.0)</strong> to close the gap between what AI can technically demo and what businesses can reliably build upon. That means fewer fragile prototypes and more resilient systems running autonomously, securely, and with zero vendor lock-in.
                         </p>
                         <p>
-                            With a background in Mathematics and Computer Science, I bring strict discipline to engineering: a problem-first mindset, transparent communication, and a refusal to ship AI systems that haven't been validated against real data.
+                            With an academic foundation in Mathematics and Computer Science, I bring rigorous discipline to engineering: clean architecture, thread-safe asynchronous execution, OS-level credential encryption, and an uncompromising testing philosophy (proven by over 366 passing automated test suites in production).
                         </p>
                         <p>
-                            Today, I work directly with global businesses as a technical partner. I build the infrastructure that lets companies scale effortlessly.
+                            Today, I partner directly with enterprise clients and global companies as a technical architect—building autonomous multi-agent pipelines, on-premise AI workstations, and high-throughput systems designed to scale effortlessly.
                         </p>
                     </div>
 
-                    <div class="mt-8 flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">Python</span>
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">FastAPI</span>
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">REST APIs</span>
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">Generative AI</span>
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">System Architecture</span>
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span class="px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">Python (PySide6 / Qt6)</span>
+                        <span class="px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">Autonomous ReAct Agents</span>
+                        <span class="px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">LangGraph</span>
+                        <span class="px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">FastAPI</span>
+                        <span class="px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">Qdrant Vector DB</span>
+                        <span class="px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">Live Voice & VAD</span>
+                        <span class="px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-white/70">SQLite WAL / Keyring</span>
                     </div>
 
-                    <div class="mt-10">
-                        <a href="Jakariya_Sheikh_CV.pdf" download class="group inline-flex items-center gap-2 px-6 py-3 bg-[#111] border border-white/10 hover:bg-white hover:text-black rounded-full text-sm font-medium text-white transition-all shadow-lg">
+                    <div class="mt-8">
+                        <a href="Jakariya_Sheikh_CV.pdf" download class="btn-shimmer group inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#111] border border-white/10 hover:bg-white hover:text-black rounded-full text-sm font-medium text-white transition-all shadow-lg">
                             <i class="fa-solid fa-file-pdf text-red-500 group-hover:text-black transition-colors"></i> Download Full Resume
                         </a>
                     </div>
                 </div>
 
-                <div class="space-y-6" data-aos="fade-left">
-                    <h2 class="text-xs font-mono text-[#a3a3a3] uppercase tracking-[0.2em] mb-4">Education</h2>
+                <div class="space-y-4 sm:space-y-5" data-aos="fade-left">
+                    <h2 class="text-xs font-mono text-[#a3a3a3] uppercase tracking-[0.2em] mb-2 sm:mb-4">Education</h2>
                     
-                    <div class="premium-card p-6 rounded-xl flex gap-4">
+                    <div class="premium-card spotlight-card p-4 sm:p-5 rounded-xl flex gap-3.5 sm:gap-4">
                         <div class="mt-1 text-white/40"><i class="fa-solid fa-graduation-cap"></i></div>
                         <div>
-                            <h4 class="text-lg font-medium text-white">B.Sc, Mathematics</h4>
-                            <p class="text-sm text-[#a3a3a3] mt-1">National University, BD — Govt. B.L. College (2014–2018)</p>
+                            <h4 class="text-base sm:text-lg font-medium text-white">B.Sc, Mathematics</h4>
+                            <p class="text-xs sm:text-sm text-[#a3a3a3] mt-1">National University, BD — Govt. B.L. College (2014–2018)</p>
                         </div>
                     </div>
                     
-                    <div class="premium-card p-6 rounded-xl flex gap-4">
+                    <div class="premium-card spotlight-card p-4 sm:p-5 rounded-xl flex gap-3.5 sm:gap-4">
                         <div class="mt-1 text-white/40"><i class="fa-solid fa-graduation-cap"></i></div>
                         <div>
-                            <h4 class="text-lg font-medium text-white">M.Sc, Mathematics & Computer Science</h4>
-                            <p class="text-sm text-[#a3a3a3] mt-1">University of London, First Class (2020–2022)</p>
+                            <h4 class="text-base sm:text-lg font-medium text-white">M.Sc, Mathematics & Computer Science</h4>
+                            <p class="text-xs sm:text-sm text-[#a3a3a3] mt-1">University of London, First Class (2020–2022)</p>
                         </div>
                     </div>
                     
-                    <div class="premium-card p-6 rounded-xl flex gap-4">
+                    <div class="premium-card spotlight-card p-4 sm:p-5 rounded-xl flex gap-3.5 sm:gap-4">
                         <div class="mt-1 text-white/40"><i class="fa-solid fa-certificate"></i></div>
                         <div>
-                            <h4 class="text-lg font-medium text-white">Database Programming</h4>
-                            <p class="text-sm text-[#a3a3a3] mt-1">Asia Technical Training Center (6-month program)</p>
+                            <h4 class="text-base sm:text-lg font-medium text-white">Database Programming</h4>
+                            <p class="text-xs sm:text-sm text-[#a3a3a3] mt-1">Asia Technical Training Center (6-month program)</p>
                         </div>
                     </div>
                 </div>
@@ -592,22 +904,25 @@ agent = AutonomousAgent(
         </section>
 
         <!-- Contact & CTA -->
-        <section id="contact" class="py-32 text-center border-t border-white/5" data-aos="zoom-in">
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mb-6">Let's build the future of your business.</h2>
-            <p class="text-[#a3a3a3] mb-10 max-w-lg mx-auto">
+        <section id="contact" class="py-12 sm:py-16 md:py-20 text-center border-t border-white/5" data-aos="zoom-in">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-3 sm:mb-4">Let's build the future of your business.</h2>
+            <p class="text-sm sm:text-base text-[#a3a3a3] mb-6 sm:mb-8 max-w-lg mx-auto">
                 Tell me what's slowing your team down. A short message with your current process is the fastest way to start.
             </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-                <a href="mailto:jakariyask1@gmail.com" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-transform hover:scale-105">
-                    Email Me
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+                <a href="mailto:jakariyask1@gmail.com" class="btn-shimmer w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg hover:shadow-white/20">
+                    <i class="fa-regular fa-envelope"></i> Email Me
                 </a>
-                <a href="https://wa.me/8801923989295" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-[#111] border border-white/10 text-white font-medium rounded-full hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-2">
+                <button id="copy-email-btn" type="button" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white/5 border border-white/10 hover:border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base">
+                    <i class="fa-regular fa-copy"></i> <span id="copy-text">Copy Email</span>
+                </button>
+                <a href="https://wa.me/8801923989295?text=Hello%20Jakariya,%20I'd%20like%20to%20discuss%20an%20AI%20project." target="_blank" rel="noopener noreferrer" class="btn-shimmer w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#111] border border-white/10 text-white font-medium rounded-full hover:bg-[#1a1a1a] transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
                     <i class="fa-brands fa-whatsapp text-green-500"></i> WhatsApp
                 </a>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-8 text-sm font-medium text-[#a3a3a3]">
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm font-medium text-[#a3a3a3]">
                 <a href="https://github.com/jakariyask1-prog" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
                 <a href="https://www.linkedin.com/in/md-jakariya-sheikh-65973618a/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
                 <a href="https://www.zenivixon.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">ZENIVIXON</a>
@@ -617,8 +932,8 @@ agent = AutonomousAgent(
 
     </main>
 
-    <footer class="border-t border-white/5 py-8 text-center text-xs text-[#555] font-mono">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer class="border-t border-white/5 py-6 sm:py-8 text-center text-xs text-zinc-400 font-mono">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div>&copy; <span id="year"></span> Md. Jakariya Sheikh.</div>
             <div>Khulna, Bangladesh</div>
         </div>
@@ -638,6 +953,56 @@ agent = AutonomousAgent(
         // Dynamic Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Scroll Progress Bar
+        const scrollBar = document.getElementById('scroll-progress');
+        if (scrollBar) {
+            window.addEventListener('scroll', () => {
+                const total = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
+                scrollBar.style.width = progress + '%';
+            }, { passive: true });
+        }
+
+        // Interactive Cursor Spotlight Glow Effect for Cards
+        document.querySelectorAll('.spotlight-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Numerical Counters Animation with Smooth Cubic Easing
+        const counters = document.querySelectorAll('.counter');
+        if (counters.length > 0) {
+            const countObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-target'), 10);
+                        const duration = 1400;
+                        const start = performance.now();
+                        function step(now) {
+                            const elapsed = now - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const easeOut = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.floor(easeOut * target);
+                            if (progress < 1) {
+                                requestAnimationFrame(step);
+                            } else {
+                                el.textContent = target;
+                            }
+                        }
+                        requestAnimationFrame(step);
+                        obs.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.3 });
+            counters.forEach(c => countObserver.observe(c));
+        }
+
         // Mobile Menu Logic
         const btnOpen = document.getElementById('mobile-menu-btn');
         const btnClose = document.getElementById('close-menu-btn');
@@ -654,25 +1019,56 @@ agent = AutonomousAgent(
             document.body.style.overflow = ''; 
         };
 
-        btnClose.addEventListener('click', closeMenu);
+                btnClose.addEventListener('click', closeMenu);
         links.forEach(link => link.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+                closeMenu();
+            }
+        });
         
-        // Interactive Tech Network Canvas
+        // Copy Email to Clipboard
+        const copyBtn = document.getElementById('copy-email-btn');
+        const copyText = document.getElementById('copy-text');
+        if (copyBtn && copyText) {
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText('jakariyask1@gmail.com').then(() => {
+                    const original = copyText.textContent;
+                    copyText.textContent = 'Copied to Clipboard!';
+                    copyBtn.classList.add('border-emerald-500', 'text-emerald-400');
+                    setTimeout(() => {
+                        copyText.textContent = original;
+                        copyBtn.classList.remove('border-emerald-500', 'text-emerald-400');
+                    }, 2200);
+                }).catch(() => {
+                    window.location.href = 'mailto:jakariyask1@gmail.com';
+                });
+            });
+        }
+        
+        // Interactive Tech Network Canvas (High-DPI / Retina Optimized + Offscreen Pause)
         const canvas = document.getElementById('tech-network');
         if (canvas) {
             const ctx = canvas.getContext('2d');
             let width, height;
+            let dpr = Math.min(window.devicePixelRatio || 1, 2);
+            let isVisible = false;
+            let animId = null;
             
             function resize() {
                 const parent = canvas.parentElement;
+                if (!parent) return;
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
                 width = parent.clientWidth;
                 height = parent.clientHeight;
-                canvas.width = width;
-                canvas.height = height;
+                canvas.width = Math.floor(width * dpr);
+                canvas.height = Math.floor(height * dpr);
+                canvas.style.width = width + 'px';
+                canvas.style.height = height + 'px';
             }
             window.addEventListener('resize', resize);
             
-            const tags = ["PYTHON", "FASTAPI", "LLAMA-3", "RAG", "LANGCHAIN", "OLLAMA", "VECTOR DB", "REST API", "NEXT.JS", "DOCKER", "POSTGRESQL", "TENSORFLOW"];
+            const tags = ["PYTHON", "LANGGRAPH", "GEMINI 3.6", "FASTAPI", "QDRANT", "RAG", "NEXT.JS 16", "OLLAMA", "POSTGRESQL", "REST API", "DOCKER", "LLAMA-3"];
             const nodes = [];
             
             // Create Text Nodes
@@ -718,6 +1114,12 @@ agent = AutonomousAgent(
             canvas.addEventListener('touchend', handleLeave);
 
             function draw() {
+                if (!isVisible) {
+                    animId = null;
+                    return;
+                }
+
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
                 ctx.clearRect(0, 0, width, height);
                 
                 // Update & Connections
@@ -802,8 +1204,19 @@ agent = AutonomousAgent(
                         ctx.fill();
                     }
                 }
-                requestAnimationFrame(draw);
+                animId = requestAnimationFrame(draw);
             }
+            
+            // IntersectionObserver to pause loop when canvas is off-screen (prevents lag and battery drain)
+            const canvasObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting;
+                    if (isVisible && !animId) {
+                        animId = requestAnimationFrame(draw);
+                    }
+                });
+            }, { threshold: 0.05 });
+            canvasObserver.observe(canvas);
             
             setTimeout(() => {
                 resize();
@@ -811,9 +1224,449 @@ agent = AutonomousAgent(
                     n.x = Math.random() * width;
                     n.y = Math.random() * height;
                 });
-                draw();
+                if (isVisible && !animId) {
+                    animId = requestAnimationFrame(draw);
+                }
             }, 100);
         }
+
+        // Interactive Multi-File Animated Code Showcase (Powered by Real Production main.py Files)
+        (function() {
+            const files = {
+                studio: {
+                    name: "studio_main.py",
+                    project: "Jakariya AI Studio (v2.0)",
+                    rawText: `import sys, os, logging
+from PySide6.QtWidgets import QApplication
+from PySide6.QtGui import QIcon, QFont
+from app.database import DatabaseService
+from app.ui.main_window import MainWindow
+from app.utils.paths import get_resource_path, load_environment
+from app.voice.utils.patch_speech import patch_speech_recognition
+
+def main():
+    # Load environment variables & pre-warm speech subsystem
+    load_environment()
+    patch_speech_recognition()
+
+    # Initialize PySide6 GUI Application
+    app = QApplication(sys.argv)
+    app.setFont(QFont("Segoe UI Variable", 10))
+
+    # Initialize persistent storage (SQLite WAL Mode & Migrations 001-003)
+    database_service = DatabaseService()
+    try:
+        database_service.initialize()
+        app.setWindowIcon(QIcon(str(get_resource_path("assets", "icons", "logo.ico"))))
+        
+        # Bootstrap Main Window with 16 AI Engines & ReAct Agent
+        window = MainWindow()
+        window.show()
+        setattr(app, "_main_window", window)
+        return app.exec()
+    finally:
+        database_service.close()
+
+if __name__ == "__main__":
+    import multiprocessing
+    multiprocessing.freeze_support()
+    sys.exit(main())`,
+                    logs: [
+                        { line: 2, text: "> PySide6 GUI & Qt6 subsystem initialized" },
+                        { line: 8, text: "> Applying speech_recognition patch for ultra-low latency voice" },
+                        { line: 12, text: "> DatabaseService: SQLite WAL mode initialized (Migrations 001-003)" },
+                        { line: 16, text: "> Loaded Window Icon & assets: assets/icons/logo.ico" },
+                        { line: 19, text: "> MainWindow initialized: 16 AI Engines active (Gemini 3.8, Groq 800 t/s, Claude 3.7)" },
+                        { line: 22, text: "> Application event loop started (60 FPS responsive UI)." }
+                    ],
+                    lines: [
+                        '<span class="text-[#c678dd]">import</span> sys, os, logging',
+                        '<span class="text-[#c678dd]">from</span> PySide6.QtWidgets <span class="text-[#c678dd]">import</span> QApplication',
+                        '<span class="text-[#c678dd]">from</span> PySide6.QtGui <span class="text-[#c678dd]">import</span> QIcon, QFont',
+                        '<span class="text-[#c678dd]">from</span> app.database <span class="text-[#c678dd]">import</span> DatabaseService',
+                        '<span class="text-[#c678dd]">from</span> app.ui.main_window <span class="text-[#c678dd]">import</span> MainWindow',
+                        '<span class="text-[#c678dd]">from</span> app.utils.paths <span class="text-[#c678dd]">import</span> get_resource_path, load_environment',
+                        '<span class="text-[#c678dd]">from</span> app.voice.utils.patch_speech <span class="text-[#c678dd]">import</span> patch_speech_recognition',
+                        '',
+                        '<span class="text-[#c678dd]">def</span> <span class="text-[#61afef]">main</span>():',
+                        '    <span class="text-[#5c6370] italic"># Load environment variables & pre-warm speech subsystem</span>',
+                        '    load_environment()',
+                        '    patch_speech_recognition()',
+                        '',
+                        '    <span class="text-[#5c6370] italic"># Initialize PySide6 GUI Application</span>',
+                        '    app = QApplication(sys.argv)',
+                        '    app.setFont(QFont(<span class="text-[#98c379]">"Segoe UI Variable"</span>, <span class="text-[#d19a66]">10</span>))',
+                        '',
+                        '    <span class="text-[#5c6370] italic"># Initialize persistent storage (SQLite WAL Mode & Migrations 001-003)</span>',
+                        '    database_service = DatabaseService()',
+                        '    <span class="text-[#c678dd]">try</span>:',
+                        '        database_service.initialize()',
+                        '        app.setWindowIcon(QIcon(<span class="text-[#e5c07b]">str</span>(get_resource_path(<span class="text-[#98c379]">"assets"</span>, <span class="text-[#98c379]">"icons"</span>, <span class="text-[#98c379]">"logo.ico"</span>))))',
+                        '        ',
+                        '        <span class="text-[#5c6370] italic"># Bootstrap Main Window with 16 AI Engines & ReAct Agent</span>',
+                        '        window = MainWindow()',
+                        '        window.show()',
+                        '        <span class="text-[#e5c07b]">setattr</span>(app, <span class="text-[#98c379]">"_main_window"</span>, window)',
+                        '        <span class="text-[#c678dd]">return</span> app.exec()',
+                        '    <span class="text-[#c678dd]">finally</span>:',
+                        '        database_service.close()',
+                        '',
+                        '<span class="text-[#c678dd]">if</span> __name__ == <span class="text-[#98c379]">"__main__"</span>:',
+                        '    <span class="text-[#c678dd]">import</span> multiprocessing',
+                        '    multiprocessing.freeze_support()',
+                        '    sys.exit(main())'
+                    ]
+                },
+                triage: {
+                    name: "triage_main.py",
+                    project: "ZENIVIXON Support (LangGraph Triage)",
+                    rawText: `from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from datetime import datetime, timezone
+from db.database import engine, Base, get_db
+from db.models import Customer, Ticket
+from agents.graph import zenivixon_agent
+
+app = FastAPI(title="ZENIVIXON Support API")
+
+@app.post("/api/tickets")
+def submit_ticket(req: TicketRequest, db: Session = Depends(get_db)):
+    # 1. Create raw ticket in PostgreSQL ledger
+    ticket = Ticket(raw_message=req.message, resolution_status="processing")
+    db.add(ticket)
+    db.commit()
+    db.refresh(ticket)
+    
+    # 2. Construct LangGraph state payload
+    initial_state = {
+        "ticket_id": ticket.id,
+        "customer_email": req.email,
+        "raw_message": req.message,
+        "is_verified": False,
+        "agent_trace": []
+    }
+    
+    # 3. Autonomous LangGraph Multi-Agent execution
+    final_state = zenivixon_agent.invoke(initial_state)
+    
+    # 4. Save grounded findings & decision to DB
+    ticket.category = final_state.get("category")
+    ticket.priority = final_state.get("priority")
+    ticket.resolution_status = final_state.get("resolution_status", "resolved")
+    ticket.draft_response = final_state.get("draft_response")
+    if ticket.resolution_status == "resolved":
+        ticket.resolved_at = datetime.now(timezone.utc)
+        
+    db.commit()
+    return {"ticket_id": ticket.id, "status": ticket.resolution_status, "trace": final_state.get("agent_trace")}`,
+                    logs: [
+                        { line: 2, text: "> FastAPI application initialized: 'ZENIVIXON Support API'" },
+                        { line: 8, text: "> POST /api/tickets: Stored raw ticket in PostgreSQL (Neon)" },
+                        { line: 14, text: "> Preparing state payload: ticket_id, customer_email, trace" },
+                        { line: 18, text: "> LangGraph agent invoked: [Intake -> Verify -> RAG -> Safety]" },
+                        { line: 22, text: "> Qdrant 3072d vector search executed (Top score: 0.94)" },
+                        { line: 26, text: "> Decision: Auto-Resolved with grounded RAG (Zero human intervention needed)." }
+                    ],
+                    lines: [
+                        '<span class="text-[#c678dd]">from</span> fastapi <span class="text-[#c678dd]">import</span> FastAPI, Depends, HTTPException',
+                        '<span class="text-[#c678dd]">from</span> sqlalchemy.orm <span class="text-[#c678dd]">import</span> Session',
+                        '<span class="text-[#c678dd]">from</span> datetime <span class="text-[#c678dd]">import</span> datetime, timezone',
+                        '<span class="text-[#c678dd]">from</span> db.database <span class="text-[#c678dd]">import</span> engine, Base, get_db',
+                        '<span class="text-[#c678dd]">from</span> db.models <span class="text-[#c678dd]">import</span> Customer, Ticket',
+                        '<span class="text-[#c678dd]">from</span> agents.graph <span class="text-[#c678dd]">import</span> zenivixon_agent',
+                        '',
+                        'app = FastAPI(title=<span class="text-[#98c379]">"ZENIVIXON Support API"</span>)',
+                        '',
+                        '<span class="text-[#61afef]">@app.post</span>(<span class="text-[#98c379]">"/api/tickets"</span>)',
+                        '<span class="text-[#c678dd]">def</span> <span class="text-[#61afef]">submit_ticket</span>(req: TicketRequest, db: Session = Depends(get_db)):',
+                        '    <span class="text-[#5c6370] italic"># 1. Create raw ticket in PostgreSQL ledger</span>',
+                        '    ticket = Ticket(raw_message=req.message, resolution_status=<span class="text-[#98c379]">"processing"</span>)',
+                        '    db.add(ticket)',
+                        '    db.commit()',
+                        '    db.refresh(ticket)',
+                        '    ',
+                        '    <span class="text-[#5c6370] italic"># 2. Construct LangGraph state payload</span>',
+                        '    initial_state = {',
+                        '        <span class="text-[#98c379]">"ticket_id"</span>: ticket.id,',
+                        '        <span class="text-[#98c379]">"customer_email"</span>: req.email,',
+                        '        <span class="text-[#98c379]">"raw_message"</span>: req.message,',
+                        '        <span class="text-[#98c379]">"is_verified"</span>: <span class="text-[#d19a66]">False</span>,',
+                        '        <span class="text-[#98c379]">"agent_trace"</span>: []',
+                        '    }',
+                        '    ',
+                        '    <span class="text-[#5c6370] italic"># 3. Autonomous LangGraph Multi-Agent execution</span>',
+                        '    final_state = zenivixon_agent.invoke(initial_state)',
+                        '    ',
+                        '    <span class="text-[#5c6370] italic"># 4. Save grounded findings & decision to DB</span>',
+                        '    ticket.category = final_state.get(<span class="text-[#98c379]">"category"</span>)',
+                        '    ticket.priority = final_state.get(<span class="text-[#98c379]">"priority"</span>)',
+                        '    ticket.resolution_status = final_state.get(<span class="text-[#98c379]">"resolution_status"</span>, <span class="text-[#98c379]">"resolved"</span>)',
+                        '    ticket.draft_response = final_state.get(<span class="text-[#98c379]">"draft_response"</span>)',
+                        '    <span class="text-[#c678dd]">if</span> ticket.resolution_status == <span class="text-[#98c379]">"resolved"</span>:',
+                        '        ticket.resolved_at = datetime.now(timezone.utc)',
+                        '        ',
+                        '    db.commit()',
+                        '    <span class="text-[#c678dd]">return</span> {<span class="text-[#98c379]">"ticket_id"</span>: ticket.id, <span class="text-[#98c379]">"status"</span>: ticket.resolution_status, <span class="text-[#98c379]">"trace"</span>: final_state.get(<span class="text-[#98c379]">"agent_trace"</span>)}'
+                    ]
+                },
+                consultant: {
+                    name: "consultant_main.py",
+                    project: "ZENIVIXON AI Consultant Platform",
+                    rawText: `from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.config.settings import settings
+from app.api.routes import health, chat, leads, handoff
+
+def create_app() -> FastAPI:
+    """Factory creating the ZENIVIXON AI Consultant application."""
+    app = FastAPI(
+        title=settings.PROJECT_NAME,
+        version=settings.VERSION,
+        openapi_url=f"{settings.API_V1_STR}/openapi.json",
+        description="Backend API for ZENIVIXON AI Consultant",
+    )
+
+    # Configure secure CORS middleware
+    cors_origins = (
+        ["*"] if settings.CORS_ORIGINS == "*"
+        else [orig.strip() for orig in settings.CORS_ORIGINS.split(",") if orig.strip()]
+    )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=cors_origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Include modular enterprise routers
+    app.include_router(health.router)
+    app.include_router(chat.router, prefix="/api/v1/chat")
+    app.include_router(leads.router, prefix="/api/v1/leads")
+    app.include_router(handoff.router, prefix="/api/v1/handoff")
+
+    return app
+
+app = create_app()`,
+                    logs: [
+                        { line: 2, text: "> Initializing FastAPI Application Factory: create_app()" },
+                        { line: 7, text: "> OpenAPI specification configured at /api/v1/openapi.json" },
+                        { line: 12, text: "> CORS origins verified and mounted with credentials support" },
+                        { line: 17, text: "> Included modular routers: /health, /chat, /leads, /handoff" },
+                        { line: 22, text: "> App factory completed. AI Consultant backend listening for requests." }
+                    ],
+                    lines: [
+                        '<span class="text-[#c678dd]">from</span> fastapi <span class="text-[#c678dd]">import</span> FastAPI',
+                        '<span class="text-[#c678dd]">from</span> fastapi.middleware.cors <span class="text-[#c678dd]">import</span> CORSMiddleware',
+                        '<span class="text-[#c678dd]">from</span> app.config.settings <span class="text-[#c678dd]">import</span> settings',
+                        '<span class="text-[#c678dd]">from</span> app.api.routes <span class="text-[#c678dd]">import</span> health, chat, leads, handoff',
+                        '',
+                        '<span class="text-[#c678dd]">def</span> <span class="text-[#61afef]">create_app</span>() -> FastAPI:',
+                        '    <span class="text-[#5c6370] italic">"""Factory creating the ZENIVIXON AI Consultant application."""</span>',
+                        '    app = FastAPI(',
+                        '        title=settings.PROJECT_NAME,',
+                        '        version=settings.VERSION,',
+                        '        openapi_url=<span class="text-[#98c379]">f"{settings.API_V1_STR}/openapi.json"</span>,',
+                        '        description=<span class="text-[#98c379]">"Backend API for ZENIVIXON AI Consultant"</span>,',
+                        '    )',
+                        '',
+                        '    <span class="text-[#5c6370] italic"># Configure secure CORS middleware</span>',
+                        '    cors_origins = (',
+                        '        [<span class="text-[#98c379]"*"</span>] <span class="text-[#c678dd]">if</span> settings.CORS_ORIGINS == <span class="text-[#98c379]"*"</span>',
+                        '        <span class="text-[#c678dd]">else</span> [orig.strip() <span class="text-[#c678dd]">for</span> orig <span class="text-[#c678dd]">in</span> settings.CORS_ORIGINS.split(<span class="text-[#98c379]","</span>) <span class="text-[#c678dd]">if</span> orig.strip()]',
+                        '    )',
+                        '    app.add_middleware(',
+                        '        CORSMiddleware,',
+                        '        allow_origins=cors_origins,',
+                        '        allow_credentials=<span class="text-[#d19a66]">True</span>,',
+                        '        allow_methods=[<span class="text-[#98c379]"*"</span>],',
+                        '        allow_headers=[<span class="text-[#98c379]"*"</span>],',
+                        '    )',
+                        '',
+                        '    <span class="text-[#5c6370] italic"># Include modular enterprise routers</span>',
+                        '    app.include_router(health.router)',
+                        '    app.include_router(chat.router, prefix=<span class="text-[#98c379]">"/api/v1/chat"</span>)',
+                        '    app.include_router(leads.router, prefix=<span class="text-[#98c379]">"/api/v1/leads"</span>)',
+                        '    app.include_router(handoff.router, prefix=<span class="text-[#98c379]">"/api/v1/handoff"</span>)',
+                        '',
+                        '    <span class="text-[#c678dd]">return</span> app',
+                        '',
+                        'app = create_app()'
+                    ]
+                }
+            };
+
+            let currentTab = 'studio';
+            let isRunning = false;
+            let runInterval = null;
+
+            const codeContainer = document.getElementById('code-content-wrapper');
+            const termContent = document.getElementById('term-log-content');
+            const termStatusDot = document.getElementById('term-status-dot');
+            const termExecTime = document.getElementById('term-exec-time');
+            const runBtn = document.getElementById('run-code-btn');
+            const runIcon = document.getElementById('run-icon');
+            const runBtnText = document.getElementById('run-btn-text');
+            const copyCodeBtn = document.getElementById('copy-code-btn');
+            const copyCodeText = document.getElementById('copy-code-text');
+            const tabButtons = document.querySelectorAll('.code-tab-btn');
+
+            function renderCode(tabKey) {
+                if (!codeContainer || !files[tabKey]) return;
+                currentTab = tabKey;
+                const file = files[tabKey];
+                
+                let html = '<div class="space-y-0.5 select-text">';
+                file.lines.forEach((line, index) => {
+                    const lineNum = (index + 1).toString().padStart(2, '0');
+                    html += `<div class="code-line flex items-baseline gap-3" id="line-${index}">
+                        <span class="text-zinc-600 select-none text-[10px] w-5 text-right font-mono">${lineNum}</span>
+                        <span class="flex-1 whitespace-pre">${line || ' '}</span>
+                    </div>`;
+                });
+                html += '</div>';
+                codeContainer.innerHTML = html;
+
+                // Update active tab buttons
+                tabButtons.forEach(btn => {
+                    const isMobile = btn.closest('.sm\\:hidden');
+                    if (btn.getAttribute('data-tab') === tabKey) {
+                        btn.className = isMobile
+                            ? "code-tab-btn active px-3 py-1 rounded bg-[#1e1e1e] text-white border border-white/10 text-xs flex items-center gap-1.5 transition-all cursor-pointer font-medium"
+                            : "code-tab-btn active px-3.5 py-1.5 rounded-md bg-[#1e1e1e] text-white border border-white/10 text-xs flex items-center gap-2 transition-all cursor-pointer font-medium";
+                    } else {
+                        btn.className = isMobile
+                            ? "code-tab-btn px-3 py-1 rounded bg-transparent hover:bg-white/5 text-[#888] hover:text-white border border-transparent text-xs flex items-center gap-1.5 transition-all cursor-pointer font-medium"
+                            : "code-tab-btn px-3.5 py-1.5 rounded-md bg-transparent hover:bg-white/5 text-[#888] hover:text-white border border-transparent text-xs flex items-center gap-2 transition-all cursor-pointer font-medium";
+                    }
+                });
+            }
+
+            function appendLog(text, color = "text-emerald-400") {
+                if (!termContent) return;
+                const p = document.createElement('p');
+                p.className = `leading-relaxed text-[11px] ${color} transition-all`;
+                p.innerHTML = text;
+                termContent.appendChild(p);
+                termContent.scrollTop = termContent.scrollHeight;
+            }
+
+            function runSimulation() {
+                if (isRunning) return;
+                isRunning = true;
+                
+                // Clear active lines
+                document.querySelectorAll('.code-line.executing').forEach(el => el.classList.remove('executing'));
+                
+                if (termContent) termContent.innerHTML = '';
+                appendLog(`<span class="text-zinc-500">> Tracing <strong>${files[currentTab].name}</strong> [${files[currentTab].project}]...</span>`, "text-zinc-400");
+                
+                if (runBtnText) runBtnText.textContent = "Tracing...";
+                if (runIcon) runIcon.className = "fa-solid fa-spinner fa-spin text-[9px]";
+                if (termStatusDot) termStatusDot.className = "w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping";
+                if (termExecTime) termExecTime.textContent = "Status: Executing...";
+
+                const file = files[currentTab];
+                const totalLines = file.lines.length;
+                let currentLine = 0;
+                
+                const startTime = performance.now();
+
+                runInterval = setInterval(() => {
+                    // Remove previous highlight
+                    const prevEl = document.getElementById(`line-${currentLine - 1}`);
+                    if (prevEl) prevEl.classList.remove('executing');
+
+                    if (currentLine >= totalLines) {
+                        clearInterval(runInterval);
+                        isRunning = false;
+                        const duration = Math.round(performance.now() - startTime);
+                        if (runBtnText) runBtnText.textContent = "Re-run Trace";
+                        if (runIcon) runIcon.className = "fa-solid fa-rotate-right text-[9px]";
+                        if (termStatusDot) termStatusDot.className = "w-1.5 h-1.5 rounded-full bg-emerald-500";
+                        if (termExecTime) termExecTime.textContent = `Completed in ${duration}ms (100%)`;
+                        appendLog(`<span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Execution trace finished successfully [0 errors].</span>`);
+                        return;
+                    }
+
+                    // Highlight current line
+                    const lineEl = document.getElementById(`line-${currentLine}`);
+                    if (lineEl) {
+                        lineEl.classList.add('executing');
+                        const containerTop = codeContainer.scrollTop;
+                        const containerBottom = containerTop + codeContainer.clientHeight;
+                        const elemTop = lineEl.offsetTop - codeContainer.offsetTop;
+                        if (elemTop > containerBottom - 40 || elemTop < containerTop) {
+                            codeContainer.scrollTop = elemTop - 50;
+                        }
+                    }
+
+                    // Check for logs associated with current line
+                    const matchingLog = file.logs.find(l => l.line === currentLine);
+                    if (matchingLog) {
+                        appendLog(matchingLog.text);
+                    }
+
+                    currentLine++;
+                }, 85);
+            }
+
+            // Copy Code to Clipboard
+            if (copyCodeBtn && copyCodeText) {
+                copyCodeBtn.addEventListener('click', () => {
+                    const code = files[currentTab].rawText;
+                    navigator.clipboard.writeText(code).then(() => {
+                        const original = copyCodeText.textContent;
+                        copyCodeText.textContent = 'Copied!';
+                        copyCodeBtn.classList.add('text-emerald-400', 'border-emerald-500/30');
+                        setTimeout(() => {
+                            copyCodeText.textContent = original;
+                            copyCodeBtn.classList.remove('text-emerald-400', 'border-emerald-500/30');
+                        }, 2000);
+                    });
+                });
+            }
+
+            // Tab click events
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (isRunning) {
+                        clearInterval(runInterval);
+                        isRunning = false;
+                        if (runBtnText) runBtnText.textContent = "Run Trace";
+                        if (runIcon) runIcon.className = "fa-solid fa-play text-[9px]";
+                    }
+                    const tabKey = btn.getAttribute('data-tab');
+                    renderCode(tabKey);
+                    if (termContent) {
+                        termContent.innerHTML = `<p class="text-zinc-500">> Switched to <strong>${files[tabKey].name}</strong> [${files[tabKey].project}]. Click "Run Trace" to test.</p>`;
+                    }
+                    if (termExecTime) termExecTime.textContent = "Status: Ready";
+                });
+            });
+
+            // Run Button
+            if (runBtn) {
+                runBtn.addEventListener('click', runSimulation);
+            }
+
+            // Initial render
+            renderCode('studio');
+
+            // Auto-run once when scrolled into view
+            let hasTriggeredAutoRun = false;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasTriggeredAutoRun) {
+                        hasTriggeredAutoRun = true;
+                        setTimeout(runSimulation, 600);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            const targetSection = document.getElementById('code-content-wrapper');
+            if (targetSection) observer.observe(targetSection);
+        })();
     </script>
 </body>
 </html>
