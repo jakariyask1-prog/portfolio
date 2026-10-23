@@ -374,6 +374,9 @@
                             <span class="text-[10px] text-emerald-400 font-mono border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 rounded-full flex items-center gap-1">
                                 <i class="fa-solid fa-check text-[9px]"></i> 366 Tests Passed (100%)
                             </span>
+                            <span class="text-[10px] text-purple-400 font-mono border border-purple-500/20 bg-purple-500/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-film text-[9px]"></i> Infographic Video Included
+                            </span>
                         </div>
                         <p class="text-[#a3a3a3] leading-relaxed mb-6 sm:mb-8 text-xs sm:text-sm">
                             The ultimate desktop AI workstation, autonomous ReAct agent & live voice ecosystem built with <strong class="text-white">Python & PySide6 (Qt6)</strong>. Unites <strong class="text-white">16 premier cloud and local AI engines</strong>, dynamic capability registry, hands-free voice with barge-in interruption, FLUX.1 ultra-HD art synthesis, and 8-format document publishing into a unified, privacy-first desktop application.
@@ -415,39 +418,105 @@
                             <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-white/5 border border-white/10 rounded-md text-[10px] sm:text-[11px] font-mono text-zinc-300">Keyring Vault</span>
                         </div>
 
-                        <div class="mt-6 sm:mt-8">
+                        <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3">
                             <a href="https://www.zenivixon.com/projects/jakariya-ai-studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-white hover:text-black rounded-full text-xs sm:text-sm font-medium text-white transition-all">
                                 View Studio Specifications <i class="fa-solid fa-arrow-right text-xs"></i>
                             </a>
+                            <button id="studio-watch-video-btn" type="button" class="btn-shimmer inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/25 hover:bg-emerald-500/20 text-emerald-400 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer">
+                                <i class="fa-solid fa-circle-play text-xs"></i> Watch Infographic Video
+                            </button>
                         </div>
                     </div>
 
-                    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex items-center justify-center relative overflow-hidden bg-[#050505]">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+                    <div class="p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col items-center justify-center relative overflow-hidden bg-[#050505]">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-tr from-emerald-500/10 via-blue-500/15 to-purple-500/10 blur-[120px] rounded-full pointer-events-none"></div>
                         
-                        <div class="w-full max-w-md bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl relative z-10 overflow-hidden font-mono text-[11px] sm:text-xs">
-                            <div class="flex items-center justify-between px-3.5 py-2.5 border-b border-white/5 bg-[#111]">
+                        <!-- Studio Workstation Display Window -->
+                        <div class="w-full max-w-lg bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl relative z-10 overflow-hidden font-mono">
+                            <!-- Window Top Bar with Controls & Tab Switcher -->
+                            <div class="flex items-center justify-between px-3.5 py-2.5 border-b border-white/10 bg-[#111]">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                                    <span class="hidden sm:inline-flex items-center gap-1.5 text-[10px] text-zinc-400 ml-1.5">
+                                        <img src="images/jakariya-ai-studio-logo.jpeg" alt="Jakariya AI Studio" class="w-3.5 h-3.5 rounded object-contain" width="14" height="14" loading="lazy">
+                                        STUDIO_v2.0_ARCHITECTURE
+                                    </span>
                                 </div>
-                                <span class="text-white/60 text-[9px] sm:text-[10px] tracking-widest flex items-center gap-2">
-                                    <img src="images/jakariya-ai-studio-logo.jpeg" alt="Jakariya AI Studio" class="w-3.5 h-3.5 rounded object-contain" width="14" height="14" loading="lazy">
-                                    JAKARIYA_STUDIO_v2.0_ENGINE
-                                </span>
+                                
+                                <!-- Mode Switcher: Motion Video vs Engine Trace -->
+                                <div class="flex items-center gap-1 bg-black/50 p-0.5 rounded-lg border border-white/10">
+                                    <button id="studio-tab-video" type="button" class="px-2.5 py-1 rounded-md text-[10px] transition-all flex items-center gap-1.5 bg-white/15 text-white font-medium cursor-pointer shadow-sm">
+                                        <i class="fa-solid fa-play text-[8px] text-emerald-400"></i> Motion Video
+                                    </button>
+                                    <button id="studio-tab-terminal" type="button" class="px-2.5 py-1 rounded-md text-[10px] transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white hover:bg-white/5 cursor-pointer">
+                                        <i class="fa-solid fa-terminal text-[8px]"></i> Engine Trace
+                                    </button>
+                                </div>
                             </div>
-                            <div class="p-4 sm:p-5 text-[#888] leading-relaxed text-[11px] sm:text-xs">
-                                <p><span class="text-emerald-400">>></span> Initializing Jakariya AI Studio v2.0.0 [PySide6 / Qt6]</p>
-                                <p><span class="text-emerald-400">>></span> Provider Registry: <span class="text-white font-semibold">16 Engines Active</span> (Gemini 3.8, Groq, Claude 3.7)</p>
-                                <p><span class="text-emerald-400">>></span> Test Suite Status: <span class="text-emerald-400 font-bold">366 / 366 Passed (100% Green)</span></p>
-                                <p><span class="text-emerald-400">>></span> Credentials: <span class="text-purple-400 font-bold">Encrypted via Windows Keyring Vault</span></p>
+
+                            <!-- View 1: Client Attractive Infographic Video Player -->
+                            <div id="studio-view-video" class="relative group bg-black aspect-video flex items-center justify-center overflow-hidden">
+                                <video id="studio-arch-video"
+                                       class="w-full h-full object-cover"
+                                       src="videos/jakariya-ai-studio-architecture.mp4"
+                                       autoplay
+                                       muted
+                                       loop
+                                       playsinline
+                                       preload="auto">
+                                </video>
+
+                                <!-- Top overlay badge -->
+                                <div class="absolute top-2.5 left-2.5 flex items-center gap-2 pointer-events-none z-20">
+                                    <span class="px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[10px] font-mono text-white flex items-center gap-1.5 shadow-lg">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        Infographic Architecture
+                                    </span>
+                                    <span class="px-1.5 py-0.5 rounded bg-blue-500/20 border border-blue-400/30 text-[9px] font-mono text-blue-300">
+                                        1280x720 HD
+                                    </span>
+                                </div>
+
+                                <!-- Floating Custom Video Controls Bar -->
+                                <div class="absolute bottom-2.5 inset-x-2.5 flex items-center justify-between px-3 py-1.5 bg-black/75 backdrop-blur-md border border-white/15 rounded-lg transition-all z-20">
+                                    <div class="flex items-center gap-2">
+                                        <!-- Play/Pause -->
+                                        <button id="studio-video-playpause" type="button" class="text-white/80 hover:text-white text-xs transition-colors p-1 cursor-pointer" aria-label="Play or Pause">
+                                            <i class="fa-solid fa-pause" id="studio-play-icon"></i>
+                                        </button>
+                                        <!-- Audio Toggle -->
+                                        <button id="studio-video-audio" type="button" class="text-white/80 hover:text-emerald-400 text-xs transition-colors flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 cursor-pointer" aria-label="Toggle Sound">
+                                            <i class="fa-solid fa-volume-xmark" id="studio-audio-icon"></i>
+                                            <span id="studio-audio-text" class="text-[10px] font-mono">Unmute</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex items-center gap-2.5 text-zinc-400 text-[10px] font-mono">
+                                        <span class="hidden sm:inline text-zinc-400 flex items-center gap-1">
+                                            <i class="fa-solid fa-rotate text-[8px] text-zinc-500"></i> Seamless Loop
+                                        </span>
+                                        <!-- Fullscreen -->
+                                        <button id="studio-video-fullscreen" type="button" class="text-white/80 hover:text-white text-xs transition-colors p-1 cursor-pointer" aria-label="Fullscreen">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- View 2: Engine Console Output Drawer (Existing Terminal View) -->
+                            <div id="studio-view-terminal" class="hidden p-4 sm:p-5 text-[#888] leading-relaxed text-[11px] sm:text-xs font-mono bg-[#0a0a0a] min-h-[220px]">
+                                <p><span class="text-emerald-400">&gt;&gt;</span> Initializing Jakariya AI Studio v2.0.0 [PySide6 / Qt6]</p>
+                                <p><span class="text-emerald-400">&gt;&gt;</span> Provider Registry: <span class="text-white font-semibold">16 Engines Active</span> (Gemini 3.8, Groq, Claude 3.7)</p>
+                                <p><span class="text-emerald-400">&gt;&gt;</span> Test Suite Status: <span class="text-emerald-400 font-bold">366 / 366 Passed (100% Green)</span></p>
+                                <p><span class="text-emerald-400">&gt;&gt;</span> Credentials: <span class="text-purple-400 font-bold">Encrypted via Windows Keyring Vault</span></p>
                                 <br>
                                 <p class="text-white/40"># ReAct Agent Planning Loop Initiated</p>
-                                <p><span class="text-blue-400">Thought</span>: Resolving capabilities for live research & report synthesis...</p>
+                                <p><span class="text-blue-400">Thought</span>: Resolving capabilities for live research &amp; report synthesis...</p>
                                 <p><span class="text-blue-400">Action</span>: <span class="text-yellow-400">web_search("Enterprise Multi-Agent Benchmarks")</span></p>
                                 <p><span class="text-blue-400">Action</span>: <span class="text-yellow-400">export_document(format="pdf", unicode="NotoSansBengali")</span></p>
-                                <p class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Generated: Market_Report.pdf & Financials.xlsx</p>
+                                <p class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Generated: Market_Report.pdf &amp; Financials.xlsx</p>
                                 <br>
                                 <p class="text-white/40"># Live Voice Interruption Subsystem</p>
                                 <p><span class="text-purple-400">Voice</span>: Continuous Live Mode active (⚡ Live)</p>
@@ -458,6 +527,16 @@
                                     <span class="animate-pulse">_</span>
                                 </p>
                             </div>
+
+                            <!-- Card Sub-Footer -->
+                            <div class="px-3.5 py-2 border-t border-white/5 bg-[#0e0e0e] flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                                <span class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-circle-check text-emerald-400 text-[9px]"></i>
+                                    Production Architecture Blueprint
+                                </span>
+                                <span class="text-zinc-500">v2.0 Engine</span>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -917,7 +996,7 @@
                 <button id="copy-email-btn" type="button" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white/5 border border-white/10 hover:border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base">
                     <i class="fa-regular fa-copy"></i> <span id="copy-text">Copy Email</span>
                 </button>
-                <a href="https://wa.me/8801923989295?text=Hello%20Jakariya,%20I'd%20like%20to%20discuss%20an%20AI%20project." target="_blank" rel="noopener noreferrer" class="btn-shimmer w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#111] border border-white/10 text-white font-medium rounded-full hover:bg-[#1a1a1a] transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+                <a href="https://wa.me/8801923989295?text=Hello%20Jakariya,%20I%27d%20like%20to%20discuss%20an%20AI%20project." target="_blank" rel="noopener noreferrer" class="btn-shimmer w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#111] border border-white/10 text-white font-medium rounded-full hover:bg-[#1a1a1a] transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
                     <i class="fa-brands fa-whatsapp text-green-500"></i> WhatsApp
                 </a>
             </div>
@@ -1666,6 +1745,112 @@ app = create_app()`,
 
             const targetSection = document.getElementById('code-content-wrapper');
             if (targetSection) observer.observe(targetSection);
+        })();
+        // Jakariya AI Studio Architecture Video & View Switcher
+        (function() {
+            const video = document.getElementById('studio-arch-video');
+            const tabVideo = document.getElementById('studio-tab-video');
+            const tabTerminal = document.getElementById('studio-tab-terminal');
+            const viewVideo = document.getElementById('studio-view-video');
+            const viewTerminal = document.getElementById('studio-view-terminal');
+            const btnPlayPause = document.getElementById('studio-video-playpause');
+            const playIcon = document.getElementById('studio-play-icon');
+            const btnAudio = document.getElementById('studio-video-audio');
+            const audioIcon = document.getElementById('studio-audio-icon');
+            const audioText = document.getElementById('studio-audio-text');
+            const btnFullscreen = document.getElementById('studio-video-fullscreen');
+            const watchVideoBtn = document.getElementById('studio-watch-video-btn');
+
+            function switchTab(mode) {
+                if (mode === 'video') {
+                    if (viewVideo) viewVideo.classList.remove('hidden');
+                    if (viewTerminal) viewTerminal.classList.add('hidden');
+                    if (tabVideo) tabVideo.className = "px-2.5 py-1 rounded-md text-[10px] transition-all flex items-center gap-1.5 bg-white/15 text-white font-medium cursor-pointer shadow-sm";
+                    if (tabTerminal) tabTerminal.className = "px-2.5 py-1 rounded-md text-[10px] transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white hover:bg-white/5 cursor-pointer";
+                    if (video && video.paused) {
+                        video.play().catch(() => {});
+                    }
+                } else {
+                    if (viewVideo) viewVideo.classList.add('hidden');
+                    if (viewTerminal) viewTerminal.classList.remove('hidden');
+                    if (tabTerminal) tabTerminal.className = "px-2.5 py-1 rounded-md text-[10px] transition-all flex items-center gap-1.5 bg-white/15 text-white font-medium cursor-pointer shadow-sm";
+                    if (tabVideo) tabVideo.className = "px-2.5 py-1 rounded-md text-[10px] transition-all flex items-center gap-1.5 text-zinc-400 hover:text-white hover:bg-white/5 cursor-pointer";
+                }
+            }
+
+            if (tabVideo) tabVideo.addEventListener('click', () => switchTab('video'));
+            if (tabTerminal) tabTerminal.addEventListener('click', () => switchTab('terminal'));
+
+            if (btnPlayPause && video) {
+                btnPlayPause.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play();
+                        if (playIcon) playIcon.className = "fa-solid fa-pause";
+                    } else {
+                        video.pause();
+                        if (playIcon) playIcon.className = "fa-solid fa-play";
+                    }
+                });
+                video.addEventListener('play', () => {
+                    if (playIcon) playIcon.className = "fa-solid fa-pause";
+                });
+                video.addEventListener('pause', () => {
+                    if (playIcon) playIcon.className = "fa-solid fa-play";
+                });
+            }
+
+            if (btnAudio && video) {
+                btnAudio.addEventListener('click', () => {
+                    video.muted = !video.muted;
+                    if (video.muted) {
+                        if (audioIcon) audioIcon.className = "fa-solid fa-volume-xmark";
+                        if (audioText) audioText.textContent = "Unmute";
+                    } else {
+                        if (audioIcon) audioIcon.className = "fa-solid fa-volume-high text-emerald-400";
+                        if (audioText) audioText.textContent = "Mute";
+                    }
+                });
+            }
+
+            if (btnFullscreen && video) {
+                btnFullscreen.addEventListener('click', () => {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    }
+                });
+            }
+
+            if (watchVideoBtn) {
+                watchVideoBtn.addEventListener('click', () => {
+                    switchTab('video');
+                    if (viewVideo) {
+                        viewVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (video && video.paused) {
+                        video.play().catch(() => {});
+                    }
+                });
+            }
+
+            // Auto-pause video when off-screen to conserve CPU / GPU
+            if (video) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            if (!video.paused) video.pause();
+                        } else {
+                            if (viewVideo && !viewVideo.classList.contains('hidden') && video.paused) {
+                                video.play().catch(() => {});
+                            }
+                        }
+                    });
+                }, { threshold: 0.2 });
+                videoObserver.observe(video);
+            }
         })();
     </script>
 </body>
